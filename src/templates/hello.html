@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-light">
+            <a style="font-size: 23px; font-color: #524F4E" class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                <b>+Health</b>
+            </a>
+            <form class="form-inline my-2 my-lg-0">
+                <button style="margin-right: 10px" class="btn btn-light my-2 my-sm-0" type="submit">Log In</button>
+                <button class="btn btn-danger my-2 my-sm-0" type="submit">Sign Up</button>
+            </form>
+        </nav>
+
+        <div class="home_container">
+            <img src="{{ url_for('static', filename='images/home_scrin.jpg') }}" class="img-fluid" alt="Responsive image">
+            <div class="text-block"> 
+                <h1><b>What is +Health?</b></h1>
+                <p>+Health pretends to gather all the patients’ <br>
+                medical information such as chronic diseases, medical <br>
+                analysis, prescriptions, treatments, diagnoses and operations. </p>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="container">
+            <h2 style="text-align: center;">Explore Our Services</h2>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/patient_history.jpeg') }}">
+                        <div class="card-body">
+                            <h4>View Patient Medical History</h4>
+                            <p class="card-text">Doctors can access the general information and see the 
+                            patient medical history to give a more precise diagnosis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/diagnosis.jpg') }}">
+                        <div class="card-body">
+                            <h4>Create Patient Diagnosis</h4>
+                            <p class="card-text">Doctors can create and fill a new diagnosis for the patient, this will be saved in the patient medical history.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/treatment.jpg') }}">
+                        <div class="card-body">
+                            <h4>Create Patient Treatment</h4>
+                            <p class="card-text">Doctors can prescribe a new diagnosis for the patient, this will be saved in the patient medical history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/upload_studies.jpg') }}">
+                        <div class="card-body">
+                            <h4>Upload Medical Studies</h4>
+                            <p class="card-text">Patients can upload their medical studies, these will be saved in the patient’s medical history.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/patient_information.jpg') }}">
+                        <div class="card-body">
+                            <h4>View Medical Information</h4>
+                            <p class="card-text">Patients and doctors can access to the patient general information to have an overall overview.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='images/validated_certificates.jpg') }}">
+                        <div class="card-body">
+                            <h4>Validated Certificates</h4>
+                            <p class="card-text">All the doctors using +Health have a certificate that was verified and validated by our team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>Hello World</p>
+
+        <br>
+        
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+<style type="text/css">
+    /* Container holding the image and the text */
+    .home_container {
+      position: relative;
+      color: white;
+    }
+
+    /* Bottom right text */
+    .text-block {
+      position: absolute;
+      background-color: rgba(22,22,22,0.2);
+      bottom: 8px;
+      left: 16px;
+      padding-left: 20px;
+      padding-right: 20px;
+      font-size: 20px;
+    }
+</style>
