@@ -34,17 +34,81 @@
                                 <input type="text" class="form-control" id="last_name" placeholder="Enter your last name">
                             </div>
                         </div>
-                    </div>    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="doctorgarcia@doctor.doc">
+                    </div>
                     
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div class="form-group">
+                        <label for="confirmInputPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmInputPassword1" placeholder="Write the password again">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    <!-- Personal info -->
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender">
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Other</option>
+                          <option>I dont want to specify</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" class="form-control" id="birthday">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Example format xxx-xxx-xxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address1">Address Line 1</label>
+                        <input type="text" class="form-control" id="address1" placeholder="Line 1 of your address">
+                        <label for="address2">Address Line 2</label>
+                        <input type="text" class="form-control" id="address2" placeholder="Line 2 of your address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="school">Graduated From:</label>
+                        <input type="text" class="form-control" id="school" placeholder="Tec de Monterrey">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="graduacion">Fecha de graduación</label>
+                                <input type="date" class="form-control" id="graduacion">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="speciality">Speciality</label>
+                                <input type="text" class="form-control" id="speciality">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hospital">Hospital where you are currently working</label>
+                        <input type="text" class="form-control" id="hospital" placeholder="Enter the name of the hospital where you're currently working">
+                    </div>
+
+                    <a href="{{ url_for('doctor_profile') }}">
+                        <button id="button" style="margin-right: 10px" class="btn btn-primary" type="button">
+                        Create Account</button>
+                    </a>
+
                 </form>
 
             </div>
