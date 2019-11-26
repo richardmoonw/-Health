@@ -1,76 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-    </head>
 
+<head>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+</head>
 
-    <body style="background-color: rgba(22,22,22,0.3)">
-        <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-            <div class="col-lg-2"></div>
-            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
-                <div style="margin: 1%;" class="row">
-                    <div class="col-lg-5"></div>
-                    <div class="col-lg-2 text-center">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
-                    </div>
+<!--- Background color, not including the rows-->
+
+<body style="background-color: rgba(22,22,22,0.3)">
+    <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
+        <div class="col-lg-2"></div>
+        <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
+            <div style="margin: 1%;" class="row">
+                <div class="col-lg-5"></div>
+                <div class="col-lg-2 text-center">
+                    <!--- Page's logo-->
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
                 </div>
+            </div>
 
-                <hr>
+            <hr>
 
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4>New Treatment</h4>
+                </div>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-1">
+                    <!--- Adds a medicine information, 'onclick' makes it blue-->
+                    <button type="button" class="btn btn-primary" onclick="add()">Add</button>
+                </div>
+                <div class="col-lg-1">
+                    <!--- Cancel button, gets back to the doctor's page-->
+                    <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
+                </div>
+                <!--- Create button, saves the treatment in the db-->
+                <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
+            </div>
+
+            <br>
+
+            <!--- Treatment's date of creation-->
+            <form id="treatment">
                 <div class="row">
-                    <div class="col-lg-4">
-                       <h4>New Treatment</h4>
+                    <div class="col-lg-3">
+                        <b>Date:</b>
                     </div>
-                    <div class="col-lg-5"></div>
-                    <div class="col-lg-1">
-                        <button type="button" class="btn btn-primary" onclick="add()">Add</button>
-                    </div>
-                    <div class="col-lg-1">
-                         <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>   
-                    </div>
-                    <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
                 </div>
-                
+
                 <br>
 
-                <form id="treatment">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Date:</b>
-                        </div>
+                <!--- Treatment's description and specifications-->
+                <div class="row">
+                    <div class="col-lg-5">
+                        <b>Description:</b>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Date:</b>
-                        </div>
+                    <div class="col-lg-2">
+                        <b>Administration:</b>
                     </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <b>Description:</b>
-                        </div>
-                        <div class="col-lg-2">
-                            <b>Administration:</b>
-                        </div>
-                        <div class="col-lg-2">
-                            <b>Dose:</b>
-                        </div>
-                        <div class="col-lg-3">
-                            <b>Frequency (Every):</b>
-                        </div>
+                    <div class="col-lg-2">
+                        <b>Dose:</b>
                     </div>
-                    <hr>
+                    <div class="col-lg-3">
+                        <b>Frequency (Every):</b>
+                    </div>
+                </div>
+                <hr>
 
-                        <script>
-                            var value = 1
+                <!--- Code when the doctor clicks "Add" button -->
+                <script>
+                    var value = 1
 
-                            function add(){
-                                $('#treatment').append(
-                                    '<div class="row">\
+                    function add() {
+                        $('#treatment').append(
+                            '<div class="row">\
                                         <div class="col-lg-5"> \
                                             <input type="text" class="form-control" id="description' + value + '"> \
                                         </div> \
@@ -93,20 +97,19 @@
                                     </div>\
                                     <br>')
 
-                                value++
-                            }
+                        value++
+                    }
+                </script>
 
-                        </script>
+            </form>
 
-                </form>
-
-            </div>
         </div>
-                
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    </div>
 
-    </body>
 
-</html> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

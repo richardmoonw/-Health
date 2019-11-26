@@ -1,41 +1,149 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    </head>
+
+<head>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+</head>
 
 
-    <body>
+<body>
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-light">
-            <a style="font-size: 23px; font-color: #524F4E" class="navbar-brand" href="#">
+    <!-- Navbar -->
+    <nav class="navbar navbar-light">
+        <a style="font-size: 23px; font-color: #524F4E" class="navbar-brand" href="#">
+                <!-- +Health's logo -->
                 <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
                 <b>+Health</b>
             </a>
-            <form class="form-inline my-2 my-lg-0">
-                <a href="{{ url_for('search_patient') }}">
-                    <button id="button" style="margin-right: 10px" class="btn btn-light my-2 my-sm-0" type="button">
+        <!-- Buttons: search patient & log out -->
+        <form class="form-inline my-2 my-lg-0">
+            <!-- Specifies the link's destination -->
+            <a href="{{ url_for('search_patient') }}">
+                <button id="button" style="margin-right: 10px" class="btn btn-light my-2 my-sm-0" type="button">
                     Search Patient</button>
-                </a>
-                <button class="btn btn-danger my-2 my-sm-0" type="submit">Log out</button>
-            </form>
-        </nav>
+            </a>
+            <button class="btn btn-danger my-2 my-sm-0" type="submit">Log out</button>
+        </form>
+    </nav>
 
-        <div style="background-color: #D7EAF1">
-            <div class="container">
+    <div style="background-color: #D7EAF1">
+        <!-- Doctor's image, name & hospital he works at -->
+        <div class="container">
+            <div class="row">
+                <div style="margin-top: 1%; margin-bottom: 1%" class="col-lg-3">
+                    <!-- Doctor's image -->
+                    <img class="rounded-circle" src="{{ url_for('static', filename='images/profile.jpg') }}" width="230" height="230">
+                </div>
+                <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
+                    <div class="row">
+                        <h2>DOCTOR NAME</h2>
+                    </div>
+                    <div class="row">
+                        <img style="float: left" src="{{ url_for('static', filename='images/icons/location.png') }}" width="25" height="25">
+                        <div class="col-lg-11">
+                            <h4>Doctor at HOSPITAL NAME</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 2%" class="container">
+        <!-- More information -->
+        <div class="row">
+            <div class="col-lg-6">
                 <div class="row">
-                    <div style="margin-top: 1%; margin-bottom: 1%" class="col-lg-3">
-                        <img class="rounded-circle" src="{{ url_for('static', filename='images/profile.jpg') }}" width="230" height="230">
-                    </div>
-                    <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
-                        <div class="row">
-                            <h2>DOCTOR NAME</h2>
+                    <img style="float: left; margin-right: 2%" src="{{ url_for('static', filename='images/icons/person.png') }}" width="25" height="25">
+                    <h4>About</h4>
+                </div>
+
+                <br>
+
+                <div>
+                    <b>Contact Information</b>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Phone:</b>
                         </div>
-                        <div class="row">
-                            <img style="float: left" src="{{ url_for('static', filename='images/icons/location.png') }}" width="25" height="25">
-                            <div class="col-lg-11">
-                                <h4>Doctor at HOSPITAL NAME</h4>
+                        <p style="color:#14779C; font-weight: normal;">PHONE NUMBER</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Email:</b>
+                        </div>
+                        <p style="color:#14779C; font-weight: normal;">EMAIL@DOCTOR.COM</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Address:</b>
+                        </div>
+                        <p style="color:#14779C; font-weight: normal;">INSERT YOUR ADDRESS HERE</p>
+                    </div>
+                </div>
+
+                <br>
+
+                <div>
+                    <b>Basic Information</b>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Birthday:</b>
+                        </div>
+                        <p style="color:#14779C; font-weight: normal;">DD/MM/YYYY</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Gender:</b>
+                        </div>
+                        <p style="color:#14779C; font-weight: normal;">GENDER</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div style="text-align: center" class="card-body">
+                                <b>Years of experience:</b>
+                                <h4>YEARS</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div style="text-align: center" class="card-body">
+                                <b>Rating:</b>
+                                <h4>RATING</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div style="text-align: center" class="card-body">
+                                <b>Speciality:</b>
+                                <h4>SPECIALITY</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div style="text-align: center" class="card-body">
+                                <b>Graduated from:</b>
+                                <h4>SCHOOL NAME</h4>
                             </div>
                         </div>
                     </div>
@@ -43,134 +151,33 @@
             </div>
         </div>
 
-        <div style="margin-top: 2%" class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <img style="float: left; margin-right: 2%" src="{{ url_for('static', filename='images/icons/person.png') }}" width="25" height="25">
-                        <h4>About</h4>
-                    </div>
+        <br>
 
-                    <br>
-
-                    <div>
-                        <b>Contact Information</b>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <b>Phone:</b>
-                            </div>
-                            <p style="color:#14779C; font-weight: normal;">PHONE NUMBER</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <b>Email:</b>
-                            </div>
-                            <p style="color:#14779C; font-weight: normal;">EMAIL@DOCTOR.COM</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <b>Address:</b>
-                            </div>
-                            <p style="color:#14779C; font-weight: normal;">INSERT YOUR ADDRESS HERE</p>
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div>
-                        <b>Basic Information</b>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <b>Birthday:</b>
-                            </div>
-                            <p style="color:#14779C; font-weight: normal;">DD/MM/YYYY</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <b>Gender:</b>
-                            </div>
-                            <p style="color:#14779C; font-weight: normal;">GENDER</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div style="text-align: center" class="card-body">
-                                    <b>Years of experience:</b>
-                                    <h4>YEARS</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div style="text-align: center" class="card-body">
-                                    <b>Rating:</b>
-                                    <h4>RATING</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div style="text-align: center" class="card-body">
-                                    <b>Speciality:</b>
-                                    <h4>SPECIALITY</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div style="text-align: center" class="card-body">
-                                    <b>Graduated from:</b>
-                                    <h4>SCHOOL NAME</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="row">
-                <img style="float: left; margin-right: 1%" src="{{ url_for('static', filename='images/icons/work.png') }}" width="25" height="25">
-                <h4>Work Experience</h4>
-            </div>
-
-
-            <br>
-
-            <div class="row">
-                <div class="col-lg-2">
-                    <b>SPECIALITY WITH THE YEARS OF EXPERIENCE</b>
-                </div>
-                <div class="col-lg-1">
-                    <b>-</b>
-                </div>
-                <p>HOSPITAL NAME</p>
-            </div>     
+        <div class="row">
+            <img style="float: left; margin-right: 1%" src="{{ url_for('static', filename='images/icons/work.png') }}" width="25" height="25">
+            <h4>Work Experience</h4>
         </div>
-                
 
-        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-    </body>
+        <br>
 
-</html> 
+        <div class="row">
+            <div class="col-lg-2">
+                <b>SPECIALITY WITH THE YEARS OF EXPERIENCE</b>
+            </div>
+            <div class="col-lg-1">
+                <b>-</b>
+            </div>
+            <p>HOSPITAL NAME</p>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5
+        smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
