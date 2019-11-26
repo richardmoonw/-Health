@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    </head>
+
+
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-light">
+            <a style="font-size: 23px; font-color: #524F4E" class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                <b>+Health</b>
+            </a>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-danger my-2 my-sm-0" type="submit">Log out</button>
+            </form>
+        </nav>
+
+        <div style="background-color: #D7EAF1">
+            <div class="container">
+                <div class="row">
+                    <div style="margin-top: 1%; margin-bottom: 1%" class="col-lg-3">
+                        <img class="rounded-circle" src="{{ url_for('static', filename='images/profile.jpg') }}" width="230" height="230">
+                    </div>
+                    <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2>PATIENT NAME</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h4>Patient Id:</h4>
+                            </div>
+                            <div class="col-lg-10">
+                                <h4>12345678    </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 2%" class="container">
+            <div class="row">
+                <img style="float: left; margin-right: 1%" src="{{ url_for('static', filename='images/icons/medical_information.png') }}" width="25" height="25">
+                <h4>Medical Information</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <h5 class="card-header">View Medical History</h5>
+                        <div style="text-align: center" class="card-body">
+                            <p style="text-align: left" class="card-text">See the last treatments, diagnosis and medical studies.</p>
+                            <a href="#" class="btn btn-secondary">View Medical History</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <h5 class="card-header">Upload Medical Studies</h5>
+                        <div style="text-align: center" class="card-body">
+                            <p style="text-align: left" class="card-text">Upload and add details to new medical studies.</p>
+                            <a href="#" class="btn btn-secondary">Upload Medical Studies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+                
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    </body>
+
+</html> 
