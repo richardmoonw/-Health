@@ -22,3 +22,15 @@ def doctor_profile():
 @app.route('/search_patient')
 def search_patient():
 	return render_template('search_patient.html')
+
+@app.route('/view_patient')
+def view_patient():
+	return render_template('view_patient.html')
+
+@app.route('/patient_profile')
+def patient_profile():
+	return render_template('patient_profile.html')
+
+@app.route('/new_treatment')
+def new_treatment():
+	return render_template('new_treatment.html')
