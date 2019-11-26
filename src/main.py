@@ -34,3 +34,7 @@ def patient_profile():
 @app.route('/new_treatment')
 def new_treatment():
 	return render_template('new_treatment.html')
+
+@app.route('/new_diagnosis')
+def new_diagnosis():
+	return render_template('new_diagnosis.html')
