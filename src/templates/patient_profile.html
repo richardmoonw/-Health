@@ -18,7 +18,9 @@
         </a>
         <!--- Log out button, 'danger' for the red color -->
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-danger my-2 my-sm-0" type="submit">Log out</button>
+            <a href="{{ url_for('login') }}">
+                <button class="btn btn-danger my-2 my-sm-0" type="button">Log out</button>
+            </a>
         </form>
     </nav>
 
@@ -155,7 +157,7 @@
                     <div style="text-align: center" class="card-body">
                         <p style="text-align: left" class="card-text">See the last treatments, diagnosis and medical studies.</p>
                         <!-- Specifies the link's destination -->
-                        <a href="#" class="btn btn-secondary">View Medical History</a>
+                        <a href=" {{ url_for('medical_history') }}" class="btn btn-secondary">View Medical History</a>
                     </div>
                 </div>
             </div>
@@ -165,7 +167,7 @@
                     <div style="text-align: center" class="card-body">
                         <p style="text-align: left" class="card-text">Upload and add details to new medical studies.</p>
                         <!-- Specifies the link's destination -->
-                        <a href="#" class="btn btn-secondary">Upload Medical Studies</a>
+                        <a href=" {{ url_for('upload_study') }}" class="btn btn-secondary">Upload Medical Studies</a>
                     </div>
                 </div>
             </div>
