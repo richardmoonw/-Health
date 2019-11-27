@@ -38,3 +38,7 @@ def new_treatment():
 @app.route('/new_diagnosis')
 def new_diagnosis():
 	return render_template('new_diagnosis.html')
+
+@app.route('/medical_history')
+def medical_history():
+	return render_template('medical_history.html')
