@@ -1,116 +1,122 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-</head>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </head>
 
-<!--- Background color, not including the rows-->
+    <!--- Background color, not including the rows-->
 
-<body style="background-color: rgba(22,22,22,0.3)">
-    <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-        <div class="col-lg-2"></div>
-        <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
-            <div style="margin: 1%;" class="row">
-                <div class="col-lg-5"></div>
-                <div class="col-lg-2 text-center">
-                    <!--- Page's logo-->
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+    <body style="background-color: rgba(22,22,22,0.3)">
+        <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
+            <div class="col-lg-2"></div>
+            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
+                <div style="margin: 1%;" class="row">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-2 text-center">
+                        <!--- Page's logo-->
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                    </div>
                 </div>
-            </div>
 
-            <hr>
+                <hr>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <h4>New Treatment</h4>
-                </div>
-                <div class="col-lg-5"></div>
-                <div class="col-lg-1">
-                    <!--- Adds a medicine information, 'onclick' makes it blue-->
-                    <button type="button" class="btn btn-primary" onclick="add()">Add</button>
-                </div>
-                <div class="col-lg-1">
-                    <!--- Cancel button, gets back to the doctor's page-->
-                    <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
-                </div>
-                <!--- Create button, saves the treatment in the db-->
-                <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
-            </div>
-
-            <br>
-
-            <!--- Treatment's date of creation-->
-            <form id="treatment">
                 <div class="row">
                     <div class="col-lg-4">
+<<<<<<< HEAD
+                        <h4>New Treatment</h4>
+                    </div>
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-1">
+                        <!--- Adds a medicine information, 'onclick' makes it blue-->
+                        <button type="button" class="btn btn-primary" onclick="add()">Add</button>
+                    </div>
+                    <div class="col-lg-1">
+                        <!--- Cancel button, gets back to the doctor's page-->
+                        <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
+=======
                         <div class="form-group">
                             <label for="treatmentdate"><b>Date</b></label>
                             <input type="date" class="form-control" id="treatmentdate">
                         </div>
+>>>>>>> 09b47869cbeea59cff0cc05003ba5c9551f46b39
                     </div>
+                    <!--- Create button, saves the treatment in the db-->
+                    <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
                 </div>
                     
                 
 
                 <br>
 
-                <!--- Treatment's description and specifications-->
-                <div class="row">
-                    <div class="col-lg-5">
-                        <b>Description:</b>
+                <!--- Treatment's date of creation-->
+                <form id="treatment" xl-form>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <b>Date:</b>
+                        </div>
                     </div>
-                    <div class="col-lg-2">
-                        <b>Administration:</b>
-                    </div>
-                    <div class="col-lg-2">
-                        <b>Dose:</b>
-                    </div>
-                    <div class="col-lg-3">
-                        <b>Frequency (Every):</b>
-                    </div>
-                </div>
-                <hr>
 
-                <!--- Code when the doctor clicks "Add" button -->
-                <script>
-                    var value = 1
+                    <br>
 
-                    function add() {
-                        $('#treatment').append(
-                            '<div class="row">\
-                                        <div class="col-lg-5"> \
-                                            <input type="text" class="form-control" id="description' + value + '"> \
-                                        </div> \
-                                        <div class="col-lg-2"> \
-                                            <input type="text" class="form-control" id="administration' + value + '"> \
-                                        </div> \
-                                        <div class="col-lg-2"> \
-                                            <input type="text" class="form-control" id="dose' + value + '"> \
-                                        </div> \
-                                        <div class="col-lg-1"> \
-                                            <input type="text" class="form-control" id="frequency_value' + value + '"> \
-                                        </div>\
-                                        <div class="col-lg-2" \
+                    <!--- Treatment's description and specifications-->
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <b>Description:</b>
+                        </div>
+                        <div class="col-lg-2">
+                            <b>Administration:</b>
+                        </div>
+                        <div class="col-lg-2">
+                            <b>Dose:</b>
+                        </div>
+                        <div class="col-lg-3">
+                            <b>Frequency (Every):</b>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!--- Code when the doctor clicks "Add" button -->
+                    <script>
+                        var value = 1
+
+                        function add() {
+                            $('#treatment').append(
+                                '<div class="row">\
+                                    <div class="col-lg-5"> \
+                                        <input type="text" class="form-control" id="description' + value + '"> \
+                                    </div> \
+                                    <div class="col-lg-2"> \
+                                        <input type="text" class="form-control" id="administration' + value + '"> \
+                                    </div> \
+                                    <div class="col-lg-2"> \
+                                        <input type="text" class="form-control" id="dose' + value + '"> \
+                                    </div> \
+                                    <div class="col-lg-1"> \
+                                        <input type="text" class="form-control" id="frequency_value' + value + '"> \
+                                    </div>\
+                                    <div class="col-lg-2" \
                                         <input type="hidden">\
                                             <select id="frequency' + value + '" class="form-control">\
                                                 <option value="hours">Hours</option>\
                                                 <option value="days">Days</option>\
                                             </select>\
-                                        </div>\
                                     </div>\
-                                    <br>')
+                                </div>\
+                            <br>')
 
-                        value++
-                    }
-                </script>
+                            value++
+                        }
+                    </script>
 
-            </form>
+                    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
+                </form>
+
+            </div>
         </div>
-    </div>
 
-</body>
+    </body>
 
 </html>
