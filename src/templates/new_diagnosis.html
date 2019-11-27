@@ -40,22 +40,24 @@
             <br>
 
             <!-- Date of the diagnosis -->
-            <form id="treatment">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <b>Date:</b>
+            <form id="diagnosisform">
+                <div class="row; col-lg-4">
+                    <div class="form-group">
+                        <label for="studydate">Date</label>
+                        <input type="date" class="form-control" id="studydate">
                     </div>
                 </div>
 
                 <br>
 
-
-                <div class="form-group">
-                    <label for="diagnosis"><b>Diagnosis:</b></label>
-                    <!--- Area for the doctor to fill with the diagnosis' description-->
-                    <textarea class="form-control" id="diagnosis" rows="6"></textarea>
+                <div class="row; col-lg-12">
+                    <div class="form-group">
+                        <label for="diagnosis"><b>Diagnosis:</b></label>
+                        <!--- Area for the doctor to fill with the diagnosis' description-->
+                        <textarea class="form-control" id="diagnosis" rows="6"></textarea>
+                    </div>
                 </div>
-
+                    
             </form>
 
         </div>
