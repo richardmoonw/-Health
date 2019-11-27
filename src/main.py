@@ -3,6 +3,7 @@ from flask import render_template
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('main_page.html')
@@ -30,6 +31,10 @@ def view_patient():
 @app.route('/patient_profile')
 def patient_profile():
 	return render_template('patient_profile.html')
+
+@app.route('/upload_study')
+def upload_study():
+	return render_template('upload_study.html')
 
 @app.route('/new_treatment')
 def new_treatment():
