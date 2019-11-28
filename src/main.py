@@ -2,15 +2,16 @@ import sqlite3
 from flask import Flask
 from flask import render_template
 
+from Doctors import doctor
+from Treatments import treatment
+from Diagnosis import diagnosis
+
 app = Flask(__name__)
 
-con = sqlite3.connect("PlusHealth.db")
-cur = con.cursor()
-cur.execute('SELECT * FROM Doctor')
-result = cur.fetchall()
-for results in result:
-	print("The result is " + str(results[1]))
-con.close()
+doctorsito = doctor.Daaaa()
+doctorsito.daa()
+
+
 
 @app.route('/')
 def home():
