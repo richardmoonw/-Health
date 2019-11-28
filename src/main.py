@@ -67,10 +67,10 @@ def login():
 			doctor = doctor_dao.DoctorDAO.get_doctor(doctor_id)
 
 			return render_template("doctor_profile.html", first_name = doctor[1], last_name = doctor[2], \
-							hospital = doctor[13], phone = doctor[5], email = doctor[8], \
-							street = doctor[14], zip_code = doctor[15], city = doctor[16], state = doctor[17], \
-							birthdate = doctor[3], sex = doctor[4], speciality = doctor[7], school = doctor[20], \
-							graduation_date = doctor[21])
+							hospital = doctor[14], phone = doctor[5], email = doctor[8], \
+							street = doctor[15], zip_code = doctor[16], city = doctor[17], state = doctor[18], \
+							birthdate = doctor[3], sex = doctor[4], speciality = doctor[7], school = doctor[21], \
+							graduation_date = doctor[12])
 
 		else:
 			return redirect("/login")
