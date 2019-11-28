@@ -20,6 +20,8 @@
                 <hr>
                 <h4><b>Sign Up</b></h4>
 
+                <br>
+
                 <form>
                     <div class="row">
                         <div class="col-lg-6">
@@ -36,7 +38,8 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 2%" class="row">
+
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -51,7 +54,7 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 2%" class="row">
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
@@ -68,7 +71,7 @@
 
                     <!-- Personal info -->
                     
-                    <div style="margin-top: 2%" class="row">
+                    <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="birthday">Birthday</label>
@@ -87,14 +90,12 @@
                                 <select class="form-control" id="gender">
                                     <option>Male</option>
                                     <option>Female</option>
-                                    <option>Other</option>
-                                    <option>I dont want to specify</option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
-                    <div style="margin-top: 2%" class="row">
+                    <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="school">Graduated From:</label>
@@ -120,17 +121,17 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="degree">Medical Degree</label>
-                        <input type="file" class="form-control-file" id="degree">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="hospital">Hospital where you are currently working</label>
+                                <input type="text" class="form-control" id="hospital" placeholder="Enter the name of the hospital where you're currently working">
+                            </div>
+                        </div>
                     </div>
+                    
 
-                    <div style="margin-top: 5%" class="form-group">
-                        <label for="hospital">Hospital where you are currently working</label>
-                        <input type="text" class="form-control" id="hospital" placeholder="Enter the name of the hospital where you're currently working">
-                    </div>
-
-                    <div style="margin-top: 2%" class="row">
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="address1">Address Line 1</label>
@@ -145,10 +146,21 @@
                         </div>
                     </div>
 
-                    <a href="{{ url_for('doctor_profile') }}">
-                        <button id="button" style="margin-right: 10px" class="btn btn-primary" type="button">
-                        Create Account</button>
-                    </a>
+                    
+                    <div style="margin-bottom: 2%" class="row">
+                        <!-- Submit & cancel buttons -->
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-1">
+                            <button type="submit" class="btn btn-secondary">Cancel</button>
+                        </div>
+                        <div class="col-lg-1">
+                            <!-- 'danger' for the red color -->
+                            <button type="submit" class="btn btn-danger">Create</button>
+                        </div>
+                    </div>
+
+
+
 
                 </form>
 
