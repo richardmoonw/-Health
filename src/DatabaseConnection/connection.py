@@ -1,3 +1,7 @@
+import sqlite3
+
 class Connection:
-	def start_connection(self):
-		print("CONNECTION SUCCESSFUL")
+	def make_connection(self):
+		conn = sqlite3.connect('PlusHealth.db')
+		
+		return conn
