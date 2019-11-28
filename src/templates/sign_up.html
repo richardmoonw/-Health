@@ -22,18 +22,18 @@
 
                 <br>
 
-                <form>
+                <form action="/sign_up" method="POST">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Enter your first name">
+                                <input type="text" class="form-control" name="first_name" placeholder="Enter your first name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Enter your last name">
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter your last name">
                             </div>
                         </div>
                     </div>
@@ -43,13 +43,13 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="doctorgarcia@doctor.doc">
+                                <input type="email" class="form-control" name="email" placeholder="doctorgarcia@doctor.doc">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email_confirm">Confirm Email</label>
-                                <input type="email" class="form-control" id="email_confirm" placeholder="doctorgarcia@doctor.doc">
+                                <input type="email" class="form-control" name="email_confirm" placeholder="doctorgarcia@doctor.doc">
                             </div>
                         </div>
                     </div>
@@ -57,14 +57,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="confirmInputPassword1">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmInputPassword1" placeholder="Write the password again">
+                                <label for="password2">Confirm Password</label>
+                                <input type="password" class="form-control" name="password2" placeholder="Write the password again">
                             </div>
                         </div>
                     </div>
@@ -74,20 +74,20 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="birthday">Birthday</label>
-                                <input type="date" class="form-control" id="birthday">
+                                <label for="birthdate">Birthdate</label>
+                                <input type="date" class="form-control" name="birthdate">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="tel" class="form-control" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Example format xxx-xxx-xxxx">
+                                <input type="tel" class="form-control" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Example format xxx-xxx-xxxx">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="gender">Gender</label>
-                                <select class="form-control" id="gender">
+                                <label for="sex">Sex</label>
+                                <select class="form-control" name="sex">
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
@@ -99,24 +99,25 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="school">Graduated From:</label>
-                                <select class="form-control" id="school">
-                                    <option>Tec de Monterrey</option>
+                                <select class="form-control" name="school">
+                                    <option>Tec de Monterrey Campus Chihuahua</option>
                                     <option>UACH</option>
-                                    <option>Universidad de Durango</option>
-                                    <option>Otra</option>
+                                    <option>Universidad de Durango Campus Chihuahua</option>
+                                    <option>UVM Campus Chihuahua</option>
+                                    <option>UNAM</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="graduacion">Fecha de graduación</label>
-                                <input type="date" class="form-control" id="graduacion">
+                                <label for="graduation">Graduation date:</label>
+                                <input type="date" class="form-control" name="graduation">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="speciality">Speciality</label>
-                                <input type="text" class="form-control" id="speciality">
+                                <input type="text" class="form-control" name="speciality">
                             </div>
                         </div>
                     </div>
@@ -125,47 +126,17 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="hospital">Hospital where you are currently working</label>
-                                <input type="text" class="form-control" id="hospital" placeholder="CIMA">
+                                <select class="form-control" name="hospital">
+                                    <option>Hospital Angeles</option>
+                                    <option>Star Medica</option>
+                                    <option>Christus Muguerza</option>
+                                    <option>Clinica Panamericana</option>
+                                    <option>Unidad Medica Familiar IMSS #44</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     
-
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <input type="text" class="form-control" id="country" placeholder="Mexican Empire">
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="state">State</label>
-                                <input type="text" class="form-control" id="state" placeholder="Ranchihuahua">
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" class="form-control" id="city" placeholder="Capital del mundo">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="street">Street</label>
-                                <input type="text" class="form-control" id="street" placeholder="Brontosaurio">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="zipcode">Zip Code</label>
-                                <input type="text" class="form-control" id="zipcode" placeholder="42069">
-                            </div>
-                        </div>
-                    </div>
                     
                     <div style="margin-bottom: 2%" class="row">
                         <!-- Submit & cancel buttons -->
@@ -178,8 +149,6 @@
                             <button type="submit" class="btn btn-danger">Create</button>
                         </div>
                     </div>
-
-
 
 
                 </form>

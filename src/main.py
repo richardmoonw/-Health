@@ -1,33 +1,81 @@
 import sqlite3
-from flask import Flask
-from flask import render_template
+from flask import Flask, request, render_template, redirect, session
 
-from Doctors import doctor
-from Treatments import treatment
-from Diagnosis import diagnosis
+import hashlib
+
+from Doctors import doctor, doctor_controller, doctor_dao
 
 app = Flask(__name__)
+app.secret_key = "O@''bw9QWHjx9|]"
 
-doctorsito = doctor.Daaaa()
-doctorsito.daa()
-
-
+doctor_id = 0
 
 @app.route('/')
 def home():
     return render_template('main_page.html')
 
-@app.route('/sign_up')
+@app.route('/sign_up', methods=["GET", "POST"])
 def sign_up():
+	if request.method == "POST":
+		first_name = request.form.get("first_name")
+		last_name = request.form.get("last_name")
+		email = request.form.get("email")
+		password = request.form.get("password")
+		birthdate = request.form.get("birthdate")
+		phone = request.form.get("phone")
+		sex = request.form.get("sex")
+		school = request.form.get("school")
+		graduation_date = request.form.get("graduation")
+		speciality = request.form.get("speciality")
+		hospital = request.form.get("hospital")
+
+		medic = doctor.Doctor(first_name, last_name, email, password, birthdate, phone, sex,\
+							school, graduation_date, speciality, hospital)
+
+		is_valid = doctor_controller.DoctorController.validate_data(medic)
+
+		if is_valid == True:
+			doctor_dao.DoctorDAO.add_doctor(medic)
+
 	return render_template('sign_up.html')
 
 @app.route('/upload_degree')
 def upload_degree():
 	return render_template('upload_degree.html')
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
-	return render_template('login.html')
+	is_user = False
+
+	if request.method == 'POST':
+
+		# Employee Data
+		email = request.form.get("email")
+		password = request.form.get("password")
+
+		user = doctor_dao.DoctorDAO.validate_login(email)
+
+		encrypted_pwd = hashlib.sha256(password.encode()).hexdigest()
+
+		if encrypted_pwd == user[1]:
+			is_user = True
+
+		if is_user:
+			session['name'] = user
+			doctor_id = session['name'][0]
+
+			doctor = doctor_dao.DoctorDAO.get_doctor(doctor_id)
+
+			return render_template("doctor_profile.html", first_name = doctor[1], last_name = doctor[2], \
+							hospital = doctor[13], phone = doctor[5], email = doctor[8], \
+							street = doctor[14], zip_code = doctor[15], city = doctor[16], state = doctor[17], \
+							birthdate = doctor[3], sex = doctor[4], speciality = doctor[7], school = doctor[20], \
+							graduation_date = doctor[21])
+
+		else:
+			return redirect("/login")
+
+	return render_template("login.html")
 
 @app.route('/doctor_profile')
 def doctor_profile():
