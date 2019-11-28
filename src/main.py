@@ -12,6 +12,10 @@ def home():
 def sign_up():
 	return render_template('sign_up.html')
 
+@app.route('/upload_degree')
+def upload_degree():
+	return render_template('upload_degree.html')
+
 @app.route('/login')
 def login():
 	return render_template('login.html')
