@@ -13,6 +13,6 @@ Lib/
 Include/
 src/DatabaseConnection/__pycache__/
 src/Doctors/__pycache__/
-src/Treatmet/__pychache__/
+src/Treatment/__pycache__/
 src/Diagnosis/__pycache__/
-__pycache__
+/__pycache__/
