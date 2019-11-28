@@ -41,12 +41,12 @@
                 </div>
                 <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
                     <div class="row">
-                        <h2>DOCTOR NAME</h2>
+                        <h2>{{ first_name }} {{ last_name }}</h2>
                     </div>
                     <div class="row">
                         <img style="float: left" src="{{ url_for('static', filename='images/icons/location.png') }}" width="25" height="25">
                         <div class="col-lg-11">
-                            <h4>Doctor at HOSPITAL NAME</h4>
+                            <h4>Doctor at {{ hospital }}</h4>
                         </div>
                     </div>
                 </div>
@@ -72,19 +72,23 @@
                         <div class="col-lg-3">
                             <b>Phone:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">PHONE NUMBER</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ phone }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Email:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">EMAIL@DOCTOR.COM</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ email }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Address:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">INSERT YOUR ADDRESS HERE</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p style="color:#14779C; font-weight: normal;">{{ street }}, ZIP Code:{{ zip_code }} {{ city }} {{ state }} </p>
+                        </div>
                     </div>
                 </div>
 
@@ -97,13 +101,13 @@
                         <div class="col-lg-3">
                             <b>Birthday:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">DD/MM/YYYY</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ birthdate }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Gender:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">GENDER</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ sex }}</p>
                     </div>
                 </div>
             </div>
@@ -113,8 +117,8 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div style="text-align: center" class="card-body">
-                                <b>Years of experience:</b>
-                                <h4>YEARS</h4>
+                                <b>Graduation Date:</b>
+                                <h4>{{ graduation_date }}</h4>
                             </div>
                         </div>
                     </div>
@@ -122,7 +126,7 @@
                         <div class="card">
                             <div style="text-align: center" class="card-body">
                                 <b>Rating:</b>
-                                <h4>RATING</h4>
+                                <h4>10/10</h4>
                             </div>
                         </div>
                     </div>
@@ -135,7 +139,7 @@
                         <div class="card">
                             <div style="text-align: center" class="card-body">
                                 <b>Speciality:</b>
-                                <h4>SPECIALITY</h4>
+                                <h4>{{ speciality }}</h4>
                             </div>
                         </div>
                     </div>
@@ -148,7 +152,7 @@
                         <div class="card">
                             <div style="text-align: center" class="card-body">
                                 <b>Graduated from:</b>
-                                <h4>SCHOOL NAME</h4>
+                                <h4>{{ school }}</h4>
                             </div>
                         </div>
                     </div>
@@ -168,12 +172,12 @@
 
         <div class="row">
             <div class="col-lg-2">
-                <b>SPECIALITY WITH THE YEARS OF EXPERIENCE</b>
+                <b>{{ speciality }} (1 year)</b>
             </div>
             <div class="col-lg-1">
                 <b>-</b>
             </div>
-            <p>HOSPITAL NAME</p>
+            <p>{{ hospital }}</p>
         </div>
     </div>
 
