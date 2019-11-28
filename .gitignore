@@ -5,3 +5,9 @@ pyvenv.cfg
 src/__pycache__/
 .DS_Store
 src/.DS_Store
+pyvenv.cfg
+lib64/
+share/
+Scripts/
+Lib/
+Include/
