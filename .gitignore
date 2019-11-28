@@ -11,3 +11,8 @@ share/
 Scripts/
 Lib/
 Include/
+src/DatabaseConnection/__pycache__/
+src/Doctors/__pycache__/
+src/Treatmet/__pychache__/
+src/Diagnosis/__pycache__/
+__pycache__
