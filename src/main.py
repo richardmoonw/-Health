@@ -1,8 +1,16 @@
+import sqlite3
 from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
 
+con = sqlite3.connect("PlusHealth.db")
+cur = con.cursor()
+cur.execute('SELECT * FROM Doctor')
+result = cur.fetchall()
+for results in result:
+	print("The result is " + str(results[1]))
+con.close()
 
 @app.route('/')
 def home():
