@@ -4,6 +4,7 @@ from flask import Flask, request, render_template, redirect, session
 import hashlib
 
 from Doctors import doctor, doctor_controller, doctor_dao
+from Diagnosis import diagnosis, diagnosis_controller, diagnosis_dao
 
 app = Flask(__name__)
 app.secret_key = "O@''bw9QWHjx9|]"
@@ -103,9 +104,21 @@ def new_treatment():
 
 @app.route('/new_diagnosis', methods=["GET", "POST"])
 def new_diagnosis():
+	if request.method == "POST":
+		date_created = request.form.get("date_created")
+		description = request.form.get("description")
 
+		diagnosis = diagnosis.Diagnosis(date_created, description)
+
+		#doctor_id = diagnosis_dao.DiagnosisDAO.get_doctor_id(doctor_id)
+
+		is_valid = diagnosis_controller.DiagnosisController.validate_data(diagnosis)
+
+		if is_valid == True:
+			diagnosis_dao.DiagnosisDAO.add_diagnosis(diagnosis)
 
 	return render_template('new_diagnosis.html')
+
 
 @app.route('/medical_history')
 def medical_history():
