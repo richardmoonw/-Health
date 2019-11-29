@@ -18,7 +18,7 @@
         </a>
         <form class="form-inline my-2 my-lg-0">
             <!--- 'danger' for the red color -->
-            <a href="{{ url_for('login') }}">
+            <a href="{{ url_for('logout') }}">
                 <button class="btn btn-danger my-2 my-sm-0" type="button">Log out</button>
             </a>
         </form>
@@ -35,7 +35,7 @@
                 <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2>PATIENT NAME</h2>
+                            <h2>{{ patient [1] }} {{ patient[2] }}</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -43,7 +43,7 @@
                             <h4>Patient Id:</h4>
                         </div>
                         <div class="col-lg-10">
-                            <h4>12345678 </h4>
+                            <h4>{{ patient[0] }}</h4>
                         </div>
                     </div>
                 </div>
@@ -69,19 +69,13 @@
                         <div class="col-lg-3">
                             <b>PHONE:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">PHONE NUMBER</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ patient[7] }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Email:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">EMAIL@DOCTOR.COM</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Address:</b>
-                        </div>
-                        <p style="color:#14779C; font-weight: normal;">INSERT YOUR ADDRESS HERE</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ patient[3] }}</p>
                     </div>
                 </div>
 
@@ -94,13 +88,13 @@
                         <div class="col-lg-3">
                             <b>Birthday:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">DD/MM/YYYY</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ patient[5] }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Gender:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">GENDER</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ patient[6] }}</p>
                     </div>
                 </div>
             </div>

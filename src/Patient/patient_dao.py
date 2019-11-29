@@ -89,6 +89,8 @@ class PatientDAO:
 		cur.execute("SELECT id, password FROM Patient WHERE email ='" + email + "'")
 		user = cur.fetchone()
 
+		conn.close()
+
 		return user
 
 	def get_patient(id):
@@ -99,7 +101,28 @@ class PatientDAO:
 		cur.execute("SELECT * FROM Patient WHERE id=" + str(id))
 		patient = cur.fetchone()
 
+		conn.close()
+
 		return patient
+
+	def request_access(doctor_id, patient_id):
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+		cur.execute("UPDATE Patient SET access_flag=true, doctor_access = " +str(doctor_id) + " WHERE id = " + patient_id)
+		conn.commit()
+
+		conn.close()
+
+	def allow_access(patient_id):
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+		cur.execute("UPDATE Patient SET access_flag=false WHERE id = " + str(patient_id))
+		conn.commit()
+
+		conn.close()
+
 
 
 
