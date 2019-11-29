@@ -23,16 +23,16 @@
 
             <hr>
 
-            <form>
+            <form action="/search_patient" method="POST">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="patient_number" placeholder="Enter the patient number">
+                            <input type="text" class="form-control" name="patient_id" placeholder="Enter the patient number">
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <!--- Cancel button, gets back to the doctor's page -->
-                        <button type="submit" class="btn btn-secondary">Cancel</button>
+                        <button type="button" class="btn btn-secondary">Cancel</button>
                     </div>
                     <div class="col-lg-2">
                         <!--- Search button, looks for the patient in the db, 'danger' for red color -->
@@ -43,7 +43,7 @@
 
 
 
-            <!-- OPTIONAL -->
+            {% if patient %}
             <div style="margin-bottom: 5%; margin-top: 5%; border-radius: 15px" class="border">
                 <form style="margin-top: 3%; margin-bottom: 3%; margin-left: 3%">
                     <div class="row">
@@ -58,11 +58,11 @@
                                 </div>
                                 <!--- Assigned ID-->
                                 <div class="col-lg-6">
-                                    <b># 12345678</b>
+                                    <b>{{ patient[0] }}</b>
                                 </div>
                                 <div style="margin-right: 2%" class="col-lg-3">
                                     <a href="{{ url_for('view_patient') }}">
-                                        <button type="button" class="btn btn-info">View Patient</button>
+                                        <button type="button" onclick="request()" class="btn btn-info">View Patient</button>
                                     </a>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                     <p>Name:</p>
                                 </div>
                                 <div class="col-lg-10">
-                                    <b>Ricardo Luna Guerrero</b>
+                                    <b>{{ patient[1] }} {{ patient[2] }}</b>
                                 </div>
                             </div>
                             <div class="row">
@@ -87,10 +87,19 @@
                     </div>
                 </form>
             </div>
+            {% endif %}
 
         </div>
     </div>
 
 </body>
+
+<script>
+    function request(){
+        alert("The request has been send")
+    }
+</script>
+
+
 
 </html>

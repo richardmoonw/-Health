@@ -1,3 +1,3 @@
 class PatientController:
-	def __init__(self):
-		self.patient_id = 1
+	def __init__(self, patient_id):
+		self.patient_id = patient_id
