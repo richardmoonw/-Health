@@ -23,19 +23,23 @@
 
             <hr>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <h4>New Diagnosis</h4>
+            <form action="/new_diagnosis" method="POST">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h4>New Diagnosis</h4>
+                    </div>
+
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">
+                        <!--- Cancel button, gets back to the doctor's page-->
+                        <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
+                    </div>
+                    <!--- Create button, saves the diagnosis in the db-->
+                    <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
                 </div>
-                <div class="col-lg-5"></div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-1">
-                    <!--- Cancel button, gets back to the doctor's page-->
-                    <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
-                </div>
-                <!--- Create button, saves the diagnosis in the db-->
-                <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
-            </div>
+            </form>
+
 
             <br>
 
@@ -57,7 +61,7 @@
                         <textarea class="form-control" id="diagnosis" rows="6"></textarea>
                     </div>
                 </div>
-                    
+
             </form>
 
         </div>
