@@ -1,5 +1,20 @@
 class Doctor:
-	def __init__(self, first_name, last_name, email, password, birthdate, phone, sex,\
+	_id = 0
+	first_name = ""
+	last_name = ""
+	email = ""
+	password = ""
+	birthdate = ""
+	phone = ""
+	sex = ""
+	school = ""
+	graduation_date = ""
+	speciality = ""
+	hospital = ""
+	rating = 10
+	filename = ""
+
+	def create_doctor(self, first_name, last_name, email, password, birthdate, phone, sex,\
 				school, graduation_date, speciality, hospital):
 	
 		self.first_name = first_name
@@ -14,5 +29,9 @@ class Doctor:
 		self.speciality = speciality
 		self.hospital = hospital
 		self.rating = 10
+
+	def create_degree(self, _id, filename):
+		self._id = _id
+		self.filename = filename
 
 

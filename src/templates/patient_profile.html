@@ -34,7 +34,7 @@
                     <!--- Patient's name and ID-->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2>PATIENT NAME</h2>
+                            <h2>{{ first_name }} {{ last_name }}</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -42,7 +42,7 @@
                             <h4>Patient Id:</h4>
                         </div>
                         <div class="col-lg-10">
-                            <h4>12345678 </h4>
+                            <h4>{{ id }}</h4>
                         </div>
                     </div>
                 </div>
@@ -68,19 +68,13 @@
                         <div class="col-lg-3">
                             <b>Phone:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">PHONE NUMBER</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ phone }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Email:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">EMAIL@DOCTOR.COM</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Address:</b>
-                        </div>
-                        <p style="color:#14779C; font-weight: normal;">INSERT YOUR ADDRESS HERE</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ email }}</p>
                     </div>
                 </div>
 
@@ -93,13 +87,13 @@
                         <div class="col-lg-3">
                             <b>Birthday:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">DD/MM/YYYY</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ birthdate }}</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <b>Gender:</b>
                         </div>
-                        <p style="color:#14779C; font-weight: normal;">GENDER</p>
+                        <p style="color:#14779C; font-weight: normal;">{{ sex }}</p>
                     </div>
                 </div>
             </div>

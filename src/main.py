@@ -25,6 +25,9 @@ def home():
 
 @app.route('/sign_up', methods=["GET", "POST"])
 def sign_up():
+
+	global doctor_id
+
 	if request.method == "POST":
 		first_name = request.form.get("first_name")
 		last_name = request.form.get("last_name")
@@ -38,13 +41,16 @@ def sign_up():
 		speciality = request.form.get("speciality")
 		hospital = request.form.get("hospital")
 
-		medic = doctor.Doctor(first_name, last_name, email, password, birthdate, phone, sex,\
+		medic = doctor.Doctor()
+		medic.create_doctor(first_name, last_name, email, password, birthdate, phone, sex,\
 							school, graduation_date, speciality, hospital)
 
 		is_valid = doctor_controller.DoctorController.validate_data(medic)
 
 		if is_valid == True:
-			doctor_dao.DoctorDAO.add_doctor(medic)
+			doc = doctor_dao.DoctorDAO.add_doctor(medic)
+			doctor_id = doc[0]
+			return redirect('/upload_degree')
 
 	return render_template('sign_up.html')
 
@@ -57,7 +63,15 @@ def upload_degree():
 		file = request.files['medical_study']
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		print("All right")
+
+		medic = doctor.Doctor()
+		medic.create_degree(doctor_id, filename)
+
+		is_valid = doctor_controller.DoctorController.validate_doctor(medic)
+
+		if is_valid == True:
+			doc = doctor_dao.DoctorDAO.new_degree(medic)
+			return redirect('/')
 
 	return render_template('upload_degree.html')
 
@@ -67,7 +81,40 @@ def login():
 
 	if request.method == 'POST':
 
-		# Employee Data
+		email = request.form.get("email")
+		password = request.form.get("password")
+
+		user = patient_dao.PatientDAO.validate_login(email)
+
+		encrypted_pwd = hashlib.sha256(password.encode()).hexdigest()
+
+		if encrypted_pwd == user[1]:
+			is_user = True
+
+		if is_user:
+			session['name'] = user
+			patient_id = session['name'][0]
+
+			patient = patient_dao.PatientDAO.get_patient(patient_id)
+
+			return render_template("patient_profile.html", id = patient[0], first_name = patient[1], last_name = patient[2], \
+							email = patient[3], birthdate = patient[5], sex = patient[6], phone = patient[7])
+
+		else:
+			return redirect("/login")
+
+	return render_template("login.html")
+
+
+@app.route('/login_patient', methods=["GET", "POST"])
+def login_patient():
+
+	global doctor_id 
+	
+	is_user = False
+
+	if request.method == 'POST':
+
 		email = request.form.get("email")
 		password = request.form.get("password")
 
@@ -91,9 +138,11 @@ def login():
 							graduation_date = doctor[12])
 
 		else:
-			return redirect("/login")
+			return redirect("/login_patient")
 
-	return render_template("login.html")
+	return render_template("login_patient.html")
+
+
 
 @app.route('/doctor_profile')
 def doctor_profile():
