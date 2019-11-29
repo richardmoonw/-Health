@@ -1,7 +1,7 @@
 class DoctorController:
 	def validate_data(doctor):
 
-		is_valid = True;
+		is_valid = True
 
 		if doctor.first_name is None:
 			is_valid = False

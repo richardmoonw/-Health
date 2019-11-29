@@ -101,8 +101,10 @@ def upload_study():
 def new_treatment():
 	return render_template('new_treatment.html')
 
-@app.route('/new_diagnosis')
+@app.route('/new_diagnosis', methods=["GET", "POST"])
 def new_diagnosis():
+
+
 	return render_template('new_diagnosis.html')
 
 @app.route('/medical_history')
