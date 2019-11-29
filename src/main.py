@@ -5,6 +5,7 @@ import hashlib
 
 from Doctors import doctor, doctor_controller, doctor_dao
 from Diagnosis import diagnosis, diagnosis_controller, diagnosis_dao
+from Prescriptions import prescription, prescription_manager, prescription_dao
 
 app = Flask(__name__)
 app.secret_key = "O@''bw9QWHjx9|]"
@@ -98,8 +99,33 @@ def patient_profile():
 def upload_study():
 	return render_template('upload_study.html')
 
-@app.route('/new_treatment')
+@app.route('/new_treatment', methods=["GET", "POST"])
 def new_treatment():
+	if request.method == "POST":
+		quantity = int(request.form.get("treatment_count"))
+		treatment_date = request.form.get("treatment_date")
+
+		description = []
+		dose = []
+		administration = []
+		frequency_value = []
+		frequency = []
+
+		for x in range(1, quantity+1):			
+			description.append(request.form.get("description" + str(x)))
+			dose.append(request.form.get("dose" + str(x)))
+			administration.append(request.form.get("administration" + str(x)))
+			frequency_value.append(request.form.get("frequency_value" + str(x)))
+			frequency.append(request.form.get("frequency" + str(x)))
+
+		pres = prescription.PrescriptionController(description, 1, treatment_date, dose, \
+													administration, frequency_value, frequency)
+
+		is_valid = prescription_manager.PrescriptionManager.validate_data(pres)
+
+		if is_valid == True:
+			prescription_dao.PrescriptionDAO.add_treatment(pres)
+
 	return render_template('new_treatment.html')
 
 @app.route('/new_diagnosis', methods=["GET", "POST"])

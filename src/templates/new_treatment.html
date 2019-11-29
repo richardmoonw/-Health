@@ -22,39 +22,34 @@
 
                 <hr>
 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h4>New Treatment</h4>
-                    </div>
-                    <div class="col-lg-5"></div>
-                    <div class="col-lg-1">
-                        <!--- Adds a medicine information, 'onclick' makes it blue-->
-                        <button type="button" class="btn btn-primary" onclick="add()">Add</button>
-                    </div>
-                    <div class="col-lg-1">
-                        <!--- Cancel button, gets back to the doctor's page-->
-                        <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
-                        
-                    </div>
-                    <!--- Create button, saves the treatment in the db-->
-                    <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
-                </div>
-                    
-                
-
-                <br>
-
                 <!--- Treatment's date of creation-->
-                <form id="treatment" xl-form>
+                <form action="/new_treatment" method="POST" id="treatment" xl-form>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h4>New Treatment</h4>
+                        </div>
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-1">
+                            <!--- Adds a medicine information, 'onclick' makes it blue-->
+                            <button type="button" class="btn btn-primary" onclick="add()">Add</button>
+                        </div>
+                        <div class="col-lg-1">
+                            <!--- Cancel button, gets back to the doctor's page-->
+                            <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
+                            
+                        </div>
+                        <!--- Create button, saves the treatment in the db-->
+                        <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
+                    </div> 
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="treatmentdate"><b>Date</b></label>
-                                <input type="date" class="form-control" id="treatmentdate">
+                                <label for="treatment_date"><b>Date</b></label>
+                                <input type="date" class="form-control" name="treatment_date">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <input type="hidden" id="treatment_count">
+                            <input type="hidden" id="treatment_count" name="treatment_count">
                         </div>
                     </div>
 
@@ -82,10 +77,14 @@
                         var value = 0
 
                         function add() {
+
+                            value++
+                            document.getElementById('treatment_count').value = value
+
                             $('#treatment').append(
                                 '<div class="row">\
                                     <div class="col-lg-5"> \
-                                        <select class="form-control" name="desccription' + value + '"> \
+                                        <select class="form-control" name="description' + value + '"> \
                                             <option>Amoxicilin</option> \
                                             <option>Omeprazole</option> \
                                             <option>Tramadol</option> \
@@ -106,17 +105,17 @@
                                         </select> \
                                     </div> \
                                     <div class="col-lg-2"> \
-                                        <input type="text" class="form-control" id="administration' + value + '"> \
+                                        <input type="text" class="form-control" name="administration' + value + '"> \
                                     </div> \
                                     <div class="col-lg-2"> \
-                                        <input type="text" class="form-control" id="dose' + value + '"> \
+                                        <input type="text" class="form-control" name="dose' + value + '"> \
                                     </div> \
                                     <div class="col-lg-1"> \
-                                        <input type="text" class="form-control" id="frequency_value' + value + '"> \
+                                        <input type="text" class="form-control" name="frequency_value' + value + '"> \
                                     </div>\
                                     <div class="col-lg-2" \
                                         <input type="hidden">\
-                                            <select id="frequency' + value + '" class="form-control">\
+                                            <select name="frequency' + value + '" class="form-control">\
                                                 <option value="hours">Hours</option>\
                                                 <option value="days">Days</option>\
                                             </select>\
@@ -124,9 +123,6 @@
                                 </div>\
                             <br>')
 
-                            value++
-
-                            document.getElementById('treatment_count').value = value
                         }
                     </script>
 
