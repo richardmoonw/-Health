@@ -81,6 +81,27 @@ class PatientDAO:
 		return drugs
 
 
+	def validate_login(email):
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+
+		cur.execute("SELECT id, password FROM Patient WHERE email ='" + email + "'")
+		user = cur.fetchone()
+
+		return user
+
+	def get_patient(id):
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+
+		cur.execute("SELECT * FROM Patient WHERE id=" + str(id))
+		patient = cur.fetchone()
+
+		return patient
+
+
 
 
 

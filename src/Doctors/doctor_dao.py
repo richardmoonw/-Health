@@ -22,7 +22,12 @@ class DoctorDAO:
 
 		conn.commit()
 
+		cur.execute('SELECT MAX(id) FROM Doctor')
+		doctor = cur.fetchone()
+
 		conn.close()
+
+		return doctor
 
 	def validate_login(email):
 		conn = connection.Connection.make_connection()
@@ -45,3 +50,16 @@ class DoctorDAO:
 		doctor = cur.fetchone()
 
 		return doctor
+
+	def new_degree(doctor):
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+		print(doctor.filename)
+		print(doctor._id)
+		cur.execute("UPDATE Doctor SET medical_degree='" + doctor.filename + "' WHERE id = " + str(doctor._id))
+		conn.commit()
+
+		conn.close()
+
+
