@@ -154,14 +154,16 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <div class="card">
-                    <h5 class="card-header">View Medical History</h5>
-                    <div style="text-align: center" class="card-body">
-                        <p style="text-align: left" class="card-text">See the last treatments, diagnosis and medical studies.</p>
-                        <!-- Specifies the link's destination -->
-                        <a href=" {{ url_for('medical_history') }}" class="btn btn-secondary">View Medical History</a>
+                <form action="/view_patient" method="POST">
+                    <div class="card">
+                        <h5 class="card-header">View Medical History</h5>
+                        <div style="text-align: center" class="card-body">
+                            <p style="text-align: left" class="card-text">See the last treatments, diagnosis and medical studies.</p>
+                            <!-- Specifies the link's destination -->
+                            <button class="btn btn-secondary" type="submit">View Medical History</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="col-lg-4">
                 <div class="card">

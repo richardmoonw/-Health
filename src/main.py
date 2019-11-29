@@ -6,6 +6,7 @@ import hashlib
 from Doctors import doctor, doctor_controller, doctor_dao
 from Diagnosis import diagnosis, diagnosis_controller, diagnosis_dao
 from Prescriptions import prescription, prescription_manager, prescription_dao
+from Patient import patient_controller, patient_manager, patient_dao
 
 app = Flask(__name__)
 app.secret_key = "O@''bw9QWHjx9|]"
@@ -87,8 +88,17 @@ def doctor_profile():
 def search_patient():
 	return render_template('search_patient.html')
 
-@app.route('/view_patient')
+@app.route('/view_patient', methods=["GET", "POST"])
 def view_patient():
+	if request.method == "POST":
+
+		pat = patient_controller.PatientController()
+
+		is_valid = patient_manager.PatientManager.validate_information(pat)
+
+		if is_valid == True:
+			patient_dao.PatientDAO.get_medical_history(pat)
+
 	return render_template('view_patient.html')
 
 @app.route('/patient_profile')
