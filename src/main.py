@@ -1,5 +1,7 @@
 import sqlite3
+import os
 from flask import Flask, request, render_template, redirect, session
+from werkzeug import secure_filename
 
 import hashlib
 
@@ -10,6 +12,9 @@ from Patient import patient_controller, patient_manager, patient_dao
 
 app = Flask(__name__)
 app.secret_key = "O@''bw9QWHjx9|]"
+UPLOAD_FOLDER = './static/medical_degrees/'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 doctor_id = 0
 
@@ -42,8 +47,15 @@ def sign_up():
 
 	return render_template('sign_up.html')
 
-@app.route('/upload_degree')
+@app.route('/upload_degree', methods=["GET", "POST"])
 def upload_degree():
+
+	if request.method == "POST":
+		file = request.files['medical_study']
+		filename = secure_filename(file.filename)
+		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		print("All right")
+
 	return render_template('upload_degree.html')
 
 @app.route('/login', methods=["GET", "POST"])
@@ -91,13 +103,22 @@ def search_patient():
 @app.route('/view_patient', methods=["GET", "POST"])
 def view_patient():
 	if request.method == "POST":
-
+		treatments = []
 		pat = patient_controller.PatientController()
 
 		is_valid = patient_manager.PatientManager.validate_information(pat)
 
 		if is_valid == True:
-			patient_dao.PatientDAO.get_medical_history(pat)
+			files = patient_dao.PatientDAO.get_medical_history(pat)
+			for file in files:
+				if file[0] == "treatment":
+					treatments.append(patient_dao.PatientDAO.get_list(file[4]))
+			drugs = patient_dao.PatientDAO.get_drugs()
+
+			print(treatments)
+
+			return render_template('medical_history.html', medical_files=files, treatments=treatments, drugs=drugs)
+
 
 	return render_template('view_patient.html')
 
@@ -157,3 +178,4 @@ def new_diagnosis():
 @app.route('/medical_history')
 def medical_history():
 	return render_template('medical_history.html')
+
