@@ -8,8 +8,8 @@
 
     <body style="background-color: rgba(22,22,22,0.3)">
         <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-            <div class="col-lg-2"></div>
-            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
+            <div class="col-lg-4"></div>
+            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-4">
                 <div style="margin: 1%;" class="row">
                     <div class="col-lg-5"></div>
                     <div class="col-lg-2 text-center">
@@ -20,20 +20,18 @@
                 <hr>
                 <h4><b>Sign Up</b></h4>
 
-                <br>
-
                 <form action="/sign_up" method="POST">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" name="first_name" placeholder="Enter your first name">
+                                <input onInput="checkLength(50,this)" type="text" class="form-control" name="first_name" placeholder="Enter your first name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" name="last_name" placeholder="Enter your last name">
+                                <input onInput="checkLength(50,this)" type="text" class="form-control" name="last_name" placeholder="Enter your last name">
                             </div>
                         </div>
                     </div>
@@ -43,13 +41,13 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="doctorgarcia@doctor.doc">
+                                <input onInput="checkLength(250,this)" type="email" class="form-control" id="email" name="email" placeholder="doctorgarcia@doctor.doc">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="email_confirm">Confirm Email</label>
-                                <input type="email" class="form-control" name="email_confirm" placeholder="doctorgarcia@doctor.doc">
+                                <label for="email2">Confirm Email</label>
+                                <input onInput="checkLength(250,this) compare(this)" type="email" class="form-control" onkeyup="compare()" id="email2" name="email2" placeholder="doctorgarcia@doctor.doc">
                             </div>
                         </div>
                     </div>
@@ -58,13 +56,13 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                <input onInput="checkLength(30,this)" type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="password2">Confirm Password</label>
-                                <input type="password" class="form-control" name="password2" placeholder="Write the password again">
+                                <input onInput="checkLength(30,this)" type="password" class="form-control" name="password2" placeholder="Write the password again">
                             </div>
                         </div>
                     </div>
@@ -72,7 +70,7 @@
                     <!-- Personal info -->
                     
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             <div class="form-group">
                                 <label for="birthdate">Birthdate</label>
                                 <input type="date" class="form-control" name="birthdate">
@@ -81,10 +79,10 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="tel" class="form-control" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Example format xxx-xxx-xxxx">
+                                <input onInput="checkLength(12,this)" type="tel" class="form-control" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="XXX-XXX-XXXX">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="sex">Sex</label>
                                 <select class="form-control" name="sex">
@@ -96,7 +94,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="school">Graduated From:</label>
                                 <select class="form-control" name="school">
@@ -108,24 +106,36 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="graduation">Graduation date:</label>
                                 <input type="date" class="form-control" name="graduation">
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="speciality">Speciality</label>
-                                <input type="text" class="form-control" name="speciality">
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-4">
+
+                        <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="hospital">Hospital where you are currently working</label>
+                                <label for="speciality">Speciality</label>
+                                <select class="form-control" name="speciality">
+                                    <option>Allergy</option>
+                                    <option>Immunology</option>
+                                    <option>Anesthesiology</option>
+                                    <option>Dermatology</option>
+                                    <option>Diagnositc Radiology</option>
+                                    <option>Neurology</option>
+                                    <option>Ophtalmology</option>
+                                    <option>Pathology</option>
+                                    <option>Pediatrics</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="hospital">Hospital</label>
                                 <select class="form-control" name="hospital">
                                     <option>Hospital Angeles</option>
                                     <option>Star Medica</option>
@@ -140,13 +150,13 @@
                     
                     <div style="margin-bottom: 2%" class="row">
                         <!-- Submit & cancel buttons -->
-                        <div class="col-lg-5"></div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-2">
                             <button type="submit" class="btn btn-secondary">Cancel</button>
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                             <!-- 'danger' for the red color -->
-                            <button type="submit" class="btn btn-danger">Create</button>
+                            <button id='create' type="submit" class="btn btn-danger">Create</button>
                         </div>
                     </div>
 
@@ -154,8 +164,24 @@
                 </form>
 
             </div>
-        </div>
-                
+        </div>  
+
+        <script>
+        function checkLength(len,ele){
+            var fieldLength = ele.value.length;
+            if(fieldLength <= len){
+                return true;
+            }
+            else
+            {
+                var str = ele.value;
+                str = str.substring(0, str.length - 1);
+                ele.value = str;
+            }
+        }
+
+        </script>
+
 
     </body>
 
