@@ -53,6 +53,9 @@
                                 <input type="date" class="form-control" id="treatmentdate">
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <input type="hidden" id="treatment_count">
+                        </div>
                     </div>
 
                     <br>
@@ -76,13 +79,31 @@
 
                     <!--- Code when the doctor clicks "Add" button -->
                     <script>
-                        var value = 1
+                        var value = 0
 
                         function add() {
                             $('#treatment').append(
                                 '<div class="row">\
                                     <div class="col-lg-5"> \
-                                        <input type="text" class="form-control" id="description' + value + '"> \
+                                        <select class="form-control" name="desccription' + value + '"> \
+                                            <option>Amoxicilin</option> \
+                                            <option>Omeprazole</option> \
+                                            <option>Tramadol</option> \
+                                            <option>Lexapro</option> \
+                                            <option>Ibuprofen</option> \
+                                            <option>Ativan</option> \
+                                            <option>Citalopram</option> \
+                                            <option>Losartan</option> \
+                                            <option>Viagra</option> \
+                                            <option>Naproxen</option> \
+                                            <option>Ciprofloxacin</option> \
+                                            <option>Codeine</option> \
+                                            <option>Doxycyline</option> \
+                                            <option>Lisinopril</option> \
+                                            <option>Gabapentin</option> \
+                                            <option>Pantoprazole</option> \
+                                            <option>Zoloft</option> \
+                                        </select> \
                                     </div> \
                                     <div class="col-lg-2"> \
                                         <input type="text" class="form-control" id="administration' + value + '"> \
@@ -104,6 +125,8 @@
                             <br>')
 
                             value++
+
+                            document.getElementById('treatment_count').value = value
                         }
                     </script>
 
