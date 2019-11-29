@@ -38,17 +38,11 @@
                     <!--- Create button, saves the diagnosis in the db-->
                     <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
                 </div>
-            </form>
 
-
-            <br>
-
-            <!-- Date of the diagnosis -->
-            <form id="diagnosisform">
                 <div class="row; col-lg-4">
                     <div class="form-group">
-                        <label for="studydate">Date</label>
-                        <input type="date" class="form-control" id="studydate">
+                        <label for="date_created">Date</label>
+                        <input type="date" class="form-control" name="date_created">
                     </div>
                 </div>
 
@@ -56,9 +50,9 @@
 
                 <div class="row; col-lg-12">
                     <div class="form-group">
-                        <label for="diagnosis"><b>Diagnosis:</b></label>
+                        <label for="description"><b>Diagnosis:</b></label>
                         <!--- Area for the doctor to fill with the diagnosis' description-->
-                        <textarea class="form-control" id="diagnosis" rows="6"></textarea>
+                        <textarea class="form-control" name="description" rows="6"></textarea>
                     </div>
                 </div>
 
