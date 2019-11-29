@@ -9,12 +9,13 @@ from Doctors import doctor, doctor_controller, doctor_dao
 from Diagnosis import diagnosis, diagnosis_controller, diagnosis_dao
 from Prescriptions import prescription, prescription_manager, prescription_dao
 from Patient import patient_controller, patient_manager, patient_dao
+from MedicalStudy import study_controller, study_manager, study_dao
 
 app = Flask(__name__)
 app.secret_key = "O@''bw9QWHjx9|]"
-UPLOAD_FOLDER = './static/medical_degrees/'
+# UPLOAD_FOLDER = './static/medical_degrees/'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 doctor_id = 0
 
@@ -51,6 +52,8 @@ def sign_up():
 def upload_degree():
 
 	if request.method == "POST":
+		UPLOAD_FOLDER = './static/medical_degrees/'
+		app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 		file = request.files['medical_study']
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -126,8 +129,24 @@ def view_patient():
 def patient_profile():
 	return render_template('patient_profile.html')
 
-@app.route('/upload_study')
+@app.route('/upload_study', methods=["GET", "POST"])
 def upload_study():
+	if request.method == "POST":
+		UPLOAD_FOLDER = './static/studies/'
+		app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+		file = request.files['medical_study']
+		date = request.form.get("date_created")
+		description = request.form.get("description")
+		filename = secure_filename(file.filename)
+		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+		
+		study = study_controller.StudyController(1, filename, date, description);
+
+		is_valid = study_manager.StudyManager.validate_information(study)
+
+		if is_valid == True:
+			study_dao.StudyDAO.add_study(study)
+
 	return render_template('upload_study.html')
 
 @app.route('/new_treatment', methods=["GET", "POST"])

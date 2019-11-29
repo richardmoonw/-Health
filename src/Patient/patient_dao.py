@@ -37,6 +37,15 @@ class PatientDAO:
 				for treatment in treatments:
 					files.append(treatment)
 
+			elif file[2] == "study":
+				cur.execute("SELECT MedicalFile.type, MedicalFile.date, MedicalStudy.description, MedicalStudy.file \
+							FROM MedicalStudy JOIN MedicalFile ON MedicalStudy.file_id = MedicalFile.id \
+							WHERE file_id=" + str(file[0]))
+				studies = cur.fetchall()
+
+				for study in studies:
+					files.append(study)
+
 		conn.close() 
 
 		return files
