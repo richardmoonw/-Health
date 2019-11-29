@@ -108,14 +108,12 @@ def new_diagnosis():
 		date_created = request.form.get("date_created")
 		description = request.form.get("description")
 
-		diagnosis = diagnosis.Diagnosis(date_created, description)
+		diag = diagnosis.Diagnosis(date_created, description, 1)
 
-		#doctor_id = diagnosis_dao.DiagnosisDAO.get_doctor_id(doctor_id)
-
-		is_valid = diagnosis_controller.DiagnosisController.validate_data(diagnosis)
+		is_valid = diagnosis_controller.DiagnosisController.validate_data(diag)
 
 		if is_valid == True:
-			diagnosis_dao.DiagnosisDAO.add_diagnosis(diagnosis)
+			diagnosis_dao.DiagnosisDAO.add_diagnosis(diag)
 
 	return render_template('new_diagnosis.html')
 

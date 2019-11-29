@@ -6,26 +6,26 @@ class DiagnosisDAO:
 
         cur = conn.cursor()
 
-        cur.execute("SELECT id FROM Doctor WHERE name='" + diagnosis.doctor_id + "'") 
-        doctor_id = cur.fetchone()
+        print("Si entro")
 
-        cur.execute("INSERT INTO Diagnosis (date_created, description, doctor_id) VALUES(?,?,?)", \
-                    (diagnosis.date_created, diagnosis.description, diagnosis.doctor_id[0]))
+        # Obtener el id del historial
+        cur.execute("SELECT id FROM MedicalHistory WHERE patient_id=" + str(diagnosis.patient_id))
+        history_id = cur.fetchone()
 
+        # Hacer el medical file
+        cur.execute("INSERT INTO MedicalFile (date, type, history_id) VALUES (?, ?, ?)", (diagnosis.date_created, \
+                    diagnosis.type, history_id[0]))
+        conn.commit()
+
+        cur.execute("SELECT MAX(id) FROM MedicalFile")
+        file_id = cur.fetchone()
+
+        # Hacer el diagnosis
+        cur.execute("INSERT INTO Diagnosis (description, doctor_id, file_id) VALUES(?,?,?)", \
+                    (diagnosis.description, diagnosis.doctor_id, file_id[0]))
         conn.commit()
 
         conn.close()
-
-    def get_doctor_id(id):
-        conn = connection.Connection.make_connection()
-
-        cur = conn.cursor()
-
-        cur.execute("SELECT doctor_id FROM Diagnosis WHERE Diagnosis.doctor_id=" + str(id))
-
-        doctor_id = cur.fetchone()
-
-        return doctor_id
 
     # def get_file_id(id):
 	# 	conn = connection.Connection.make_connection()
