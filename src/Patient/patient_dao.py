@@ -16,28 +16,71 @@ class PatientDAO:
 
 		for file in medical_files:
 			if file[2] == "diagnosis":
-				cur.execute("SELECT MedicalFile.date, Diagnosis.description, Doctor.first_name, Doctor.last_name \
+				cur.execute("SELECT MedicalFile.type, MedicalFile.date, Doctor.first_name, Doctor.last_name, Diagnosis.description \
 							FROM Diagnosis JOIN Doctor ON Diagnosis.doctor_id = Doctor.id \
 							JOIN MedicalFile ON Diagnosis.file_id = MedicalFile.id \
 							WHERE file_id=" + str(file[0]))
 				diagnosiss = cur.fetchall()
 
 				for diagnosis in diagnosiss:
-					files.append(diagnosiss)
+					files.append(diagnosis)
 
 
 			elif file[2] == "treatment":
-				cur.execute("SELECT MedicalFile.date, Treatment.id, Treatment.file_id, Doctor.first_name, Doctor.last_name \
+				cur.execute("SELECT MedicalFile.type, MedicalFile.date, Doctor.first_name, Doctor.last_name , Treatment.id, \
+							Treatment.file_id \
 							FROM Treatment JOIN Doctor ON Treatment.doctor_id = Doctor.id \
 							JOIN MedicalFile ON Treatment.file_id = MedicalFile.id \
 							WHERE file_id=" + str(file[0]))
 				treatments = cur.fetchall()
 
 				for treatment in treatments:
-					drugs = []
+					files.append(treatment)
 
-					
+			elif file[2] == "study":
+				cur.execute("SELECT MedicalFile.type, MedicalFile.date, MedicalStudy.description, MedicalStudy.file \
+							FROM MedicalStudy JOIN MedicalFile ON MedicalStudy.file_id = MedicalFile.id \
+							WHERE file_id=" + str(file[0]))
+				studies = cur.fetchall()
 
-		print(files)
+				for study in studies:
+					files.append(study)
 
 		conn.close() 
+
+		return files
+
+	def get_list(treatment_id):
+		treatments = []
+
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+
+		cur.execute("SELECT * FROM TreatmentList WHERE treatment_id=" + str(treatment_id))
+		treatment_list = cur.fetchall()
+
+		if treatment_list is not None:
+			for treatment in treatment_list:
+				treatments.append(treatment)
+
+		conn.close()
+
+		return treatments
+
+	def get_drugs():
+		conn = connection.Connection.make_connection()
+
+		cur = conn.cursor()
+
+		cur.execute("SELECT * FROM TreatmentItem")
+		drugs = cur.fetchall()
+
+		conn.close()
+
+		return drugs
+
+
+
+
+

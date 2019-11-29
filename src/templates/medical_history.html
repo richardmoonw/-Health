@@ -57,34 +57,112 @@
                 <h4>Medical History</h4>
             </div>
             <br>
+
+            {% for file in medical_files %}
             <div class="row">
+                {% if file[0] == "diagnosis" %}
                 <div style="border-left: 5px solid red" class="col-lg-12">
+                {% endif %}
+                {% if file[0] == "treatment" %}
+                <div style="border-left: 5px solid blue" class="col-lg-12">
+                {% endif %}
+                {% if file[0] == "study" %}
+                <div style="border-left: 5px solid green" class="col-lg-12">
+                {% endif %}
                     <div class="row">
                         <div class="col-lg-12">
-                            <p><b>Type:</b>TYPE OF DOCUMENT</p>
+                            <p><b>Type: </b>{{ file[0] }}</p>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p><b>Created by:</b>NAME OF THE PERSON</p>
+                    {% if file[0] != "study" %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p><b>Created by: </b>{{ file[2] }} {{ file[3] }}</p>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <p><b>Date:</b>DATE CREATED</p>
+                            <p><b>Date: </b>{{ file[1] }}</p>
                         </div>
                     </div>
 
+                    {% if file[0] == "diagnosis" %}
                     <div class="row">
                         <div class="col-lg-12">
                             <b>Description:</b>
-                            <p>DESCRIPTION</p>
+                            <p>{{ file[4] }}</p>
                         </div>
                     </div>
+                    {% endif %}
+
+                    {% if file[0] == "treatment" %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <b>Prescription:</b>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <p>Description:</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>Administration:</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>Dose:</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>Frequency:</p>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    {% for treatment in treatments %}
+                        {% for treat in treatment %}
+                            {% if file[4] == treat[0] %}
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <p>{{ drugs[treat[1]-1][1] }}</p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <p>{{ treat[4] }}</p>
+                                </div>
+                                <div class="col-lg-2">
+                                    <p>{{ treat[3] }}</p>
+                                </div>
+                                <div class="col-lg-2">
+                                    <p>{{ treat[2] }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if file[0] == "study" %}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <b>Description:</b>
+                            <p>{{ file[2] }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <b>File:</b>
+                            <a href="{{ url_for('static', filename='studies/' + file[3]) }}">{{ file[3] }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
+            <br>
+            <br>
+            {% endfor %}
         </div>
 
 

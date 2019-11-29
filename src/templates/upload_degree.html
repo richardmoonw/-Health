@@ -22,24 +22,29 @@
 
             <hr>
             <h4><b>Upload Medical Degree</b></h4>
+            <br>
 
-            <form>
+            <form action="/upload_degree" method="POST" enctype = "multipart/form-data">
 
-                <div style="margin-top: 5%" class="form-group">
-                    <input type="file" class="form-control-file" id="medicalstudy">
-                </div>
-
-                <div style="margin-bottom: 2%" class="row">
+                <div class="row">
                     <!-- Submit & cancel buttons -->
+                    <div class="col-lg-7">
+                        <input type="file" class="form-control-file" name="medical_study">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <a href="{{ url_for('static', filename='medical_degrees/Captura_de_Pantalla_2019-11-15_a_las_20.36.00.png') }}">Descargar</a>
                     <div class="col-lg-4"></div>
                     <div class="col-lg-2">
-                        <button type="submit" class="btn btn-secondary">Cancel</button>
+                        <button type="button" class="btn btn-secondary">Cancel</button>
                     </div>
                     <div class="col-lg-2">
                         <!-- 'danger' for the red color -->
                         <button type="submit" class="btn btn-danger">Submit</button>
                     </div>
                 </div>
+                <br>
             </form>
 
         </div>
