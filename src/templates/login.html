@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-</head>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </head>
 
-<!-- Background color, doesn't include form -->
+    <!-- Background color, doesn't include form -->
 
-<body style="background-color: rgba(22,22,22,0.3)">
-    <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-        <div class="col-lg-4"></div>
-        <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-4">
-            <!-- Logo, atributes -->
-            <div style="margin: 1%;" class="row">
-                <div class="col-lg-5"></div>
-                <div class="col-lg-2 text-center">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+    <body style="background-color: rgba(22,22,22,0.3)">
+        <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
+            <div class="col-lg-4"></div>
+            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-4">
+                <!-- Logo, atributes -->
+                <div style="margin: 1%;" class="row">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-2 text-center">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                    </div>
                 </div>
+
+                <hr>
+                <h4><b>Login</b></h4>
+
+                <form action="/login" method="POST">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <!-- label to write down user's email -->
+                                <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="last_name">Password:</label>
+                                <!-- label to write down user's password -->
+                                <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2%" class="row">
+                        <!-- Submit & cancel buttons -->
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                        </div>
+                        <div class="col-lg-2">
+                            <!-- 'danger' for the red color -->
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-
-            <hr>
-            <h4><b>Login</b></h4>
-
-            <form action="/login" method="POST">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <!-- label to write down user's email -->
-                            <input type="email" class="form-control" name="email" placeholder="Enter your email">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label for="last_name">Password:</label>
-                            <!-- label to write down user's password -->
-                            <input type="password" class="form-control" name="password" placeholder="Enter your password">
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 2%" class="row">
-                    <!-- Submit & cancel buttons -->
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-2">
-                        <button type="button" class="btn btn-secondary">Cancel</button>
-                    </div>
-                    <div class="col-lg-2">
-                        <!-- 'danger' for the red color -->
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                </div>
-            </form>
-
         </div>
-    </div>
 
-</body>
+    </body>
 
 </html>

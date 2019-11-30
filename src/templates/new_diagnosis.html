@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-</head>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </head>
 
 
-<!--- Background color, not including row-->
+    <!--- Background color, not including row-->
 
-<body style="background-color: rgba(22,22,22,0.3)">
-    <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-        <div class="col-lg-2"></div>
-        <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
-            <div style="margin: 1%;" class="row">
-                <div class="col-lg-5"></div>
-                <div class="col-lg-2 text-center">
-                    <!--- Page's logo-->
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
-                </div>
-            </div>
-
-            <hr>
-
-            <form action="/new_diagnosis" method="POST">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h4>New Diagnosis</h4>
-                    </div>
-
+    <body style="background-color: rgba(22,22,22,0.3)">
+        <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
+            <div class="col-lg-2"></div>
+            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-8">
+                <div style="margin: 1%;" class="row">
                     <div class="col-lg-5"></div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-1">
-                        <!--- Cancel button, gets back to the doctor's page-->
-                        <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
-                    </div>
-                    <!--- Create button, saves the diagnosis in the db-->
-                    <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
-                </div>
-
-                <div class="row; col-lg-4">
-                    <div class="form-group">
-                        <label for="date_created">Date</label>
-                        <input type="date" class="form-control" name="date_created">
+                    <div class="col-lg-2 text-center">
+                        <!--- Page's logo-->
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
                     </div>
                 </div>
 
-                <br>
+                <hr>
 
-                <div class="row; col-lg-12">
-                    <div class="form-group">
-                        <label for="description"><b>Diagnosis:</b></label>
-                        <!--- Area for the doctor to fill with the diagnosis' description-->
-                        <textarea class="form-control" name="description" rows="6"></textarea>
+                <form action="/new_diagnosis" method="POST">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h4>New Diagnosis</h4>
+                        </div>
+
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-1">
+                            <!--- Cancel button, gets back to the doctor's page-->
+                            <button class="btn btn-light my-2 my-sm-0" type="submit">Cancel</button>
+                        </div>
+                        <!--- Create button, saves the diagnosis in the db-->
+                        <button class="btn btn-info my-2 my-sm-0" type="submit">Create</button>
                     </div>
-                </div>
 
-            </form>
+                    <div class="row; col-lg-4">
+                        <div class="form-group">
+                            <label for="date_created">Date</label>
+                            <input type="date" class="form-control" name="date_created">
+                        </div>
+                    </div>
 
+                    <br>
+
+                    <div class="row; col-lg-12">
+                        <div class="form-group">
+                            <label for="description"><b>Diagnosis:</b></label>
+                            <!--- Area for the doctor to fill with the diagnosis' description-->
+                            <textarea class="form-control" name="description" rows="6"></textarea>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
         </div>
-    </div>
 
-</body>
+    </body>
 
 </html>

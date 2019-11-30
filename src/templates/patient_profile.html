@@ -1,225 +1,225 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-</head>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </head>
 
 
-<body>
+    <body>
 
-    {% if flag %}
-        <body style="background-color: rgba(22,22,22,0.3)">
-            <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-                <div class="col-lg-4"></div>
-                <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-4">
-                    <!-- Logo, atributes -->
-                    <div style="margin: 1%;" class="row">
-                        <div class="col-lg-5"></div>
-                        <div class="col-lg-2 text-center">
-                            <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+        {% if flag %}
+            <body style="background-color: rgba(22,22,22,0.3)">
+                <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
+                    <div class="col-lg-4"></div>
+                    <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-4">
+                        <!-- Logo, atributes -->
+                        <div style="margin: 1%;" class="row">
+                            <div class="col-lg-5"></div>
+                            <div class="col-lg-2 text-center">
+                                <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h4><b>Requested Access </b></h4>
+
+                        <form action="/patient_profile" method="POST">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p><b>Name:</b> {{ doc_first_name }} {{ doc_last_name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p><b>Speciality:</b> {{ doc_speciality }}</p>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 2%" class="row">
+                                <!-- Submit & cancel buttons -->
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-2">
+                                    <button type="button" class="btn btn-secondary">Deny</button>
+                                </div>
+                                <div class="col-lg-2">
+                                    <!-- 'danger' for the red color -->
+                                    <button type="submit" class="btn btn-danger">Allow</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </body>
+        {% endif %}
+
+
+
+        {% if not flag %}
+        <!-- Navbar -->
+        <nav class="navbar navbar-light">
+            <!--- Page's logo & name  -->
+            <a style="font-size: 23px; font-color: #524F4E" class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                <b>+Health</b>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <button class="btn btn-danger my-2 my-sm-0" type="button">Log out</button>
+            </a>
+
+        </nav>
+
+        <div style="background-color: #D7EAF1">
+            <div class="container">
+                <div class="row">
+                    <div style="margin-top: 1%; margin-bottom: 1%" class="col-lg-3">
+                        <img class="rounded-circle" src="{{ url_for('static', filename='images/profile.jpg') }}" width="230" height="230">
+                    </div>
+                    <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
+                        <!--- Patient's name and ID-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2>{{ first_name }} {{ last_name }}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h4>Patient Id:</h4>
+                            </div>
+                            <div class="col-lg-10">
+                                <h4>{{ id }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 2%" class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <img style="float: left; margin-right: 2%" src="{{ url_for('static', filename='images/icons/person.png') }}" width="25" height="25">
+                        <h4>About</h4>
+                    </div>
+
+                    <br>
+
+                    <!-- Personal information about the patient -->
+                    <div>
+                        <h5><b>Contact Information</b></h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <b>Phone:</b>
+                            </div>
+                            <p style="color:#14779C; font-weight: normal;">{{ phone }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <b>Email:</b>
+                            </div>
+                            <p style="color:#14779C; font-weight: normal;">{{ email }}</p>
                         </div>
                     </div>
 
-                    <hr>
-                    <h4><b>Requested Access </b></h4>
+                    <br>
 
-                    <form action="/patient_profile" method="POST">
+                    <div>
+                        <h5><b>Basic Information</b></h5>
+                        <hr>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <p><b>Name:</b> {{ doc_first_name }} {{ doc_last_name }}</p>
+                            <div class="col-lg-3">
+                                <b>Birthday:</b>
                             </div>
+                            <p style="color:#14779C; font-weight: normal;">{{ birthdate }}</p>
                         </div>
-
                         <div class="row">
-                            <div class="col-lg-12">
-                                <p><b>Speciality:</b> {{ doc_speciality }}</p>
+                            <div class="col-lg-3">
+                                <b>Gender:</b>
                             </div>
+                            <p style="color:#14779C; font-weight: normal;">{{ sex }}</p>
                         </div>
-
-                        <div style="margin-bottom: 2%" class="row">
-                            <!-- Submit & cancel buttons -->
-                            <div class="col-lg-4"></div>
-                            <div class="col-lg-2">
-                                <button type="button" class="btn btn-secondary">Deny</button>
-                            </div>
-                            <div class="col-lg-2">
-                                <!-- 'danger' for the red color -->
-                                <button type="submit" class="btn btn-danger">Allow</button>
-                            </div>
-                        </div>
-                    </form>
-
+                    </div>
                 </div>
-            </div>
 
-        </body>
-    {% endif %}
-
-
-
-    {% if not flag %}
-    <!-- Navbar -->
-    <nav class="navbar navbar-light">
-        <!--- Page's logo & name  -->
-        <a style="font-size: 23px; font-color: #524F4E" class="navbar-brand" href="#">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
-            <b>+Health</b>
-        </a>
-
-        <a href="{{ url_for('logout') }}">
-            <button class="btn btn-danger my-2 my-sm-0" type="button">Log out</button>
-        </a>
-
-    </nav>
-
-    <div style="background-color: #D7EAF1">
-        <div class="container">
-            <div class="row">
-                <div style="margin-top: 1%; margin-bottom: 1%" class="col-lg-3">
-                    <img class="rounded-circle" src="{{ url_for('static', filename='images/profile.jpg') }}" width="230" height="230">
-                </div>
-                <div style="margin-top: 7%; margin-bottom: 7%" class="col-lg-9">
-                    <!--- Patient's name and ID-->
+                <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2>{{ first_name }} {{ last_name }}</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <h4>Patient Id:</h4>
-                        </div>
-                        <div class="col-lg-10">
-                            <h4>{{ id }}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div style="margin-top: 2%" class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <img style="float: left; margin-right: 2%" src="{{ url_for('static', filename='images/icons/person.png') }}" width="25" height="25">
-                    <h4>About</h4>
-                </div>
-
-                <br>
-
-                <!-- Personal information about the patient -->
-                <div>
-                    <h5><b>Contact Information</b></h5>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Phone:</b>
-                        </div>
-                        <p style="color:#14779C; font-weight: normal;">{{ phone }}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Email:</b>
-                        </div>
-                        <p style="color:#14779C; font-weight: normal;">{{ email }}</p>
-                    </div>
-                </div>
-
-                <br>
-
-                <div>
-                    <h5><b>Basic Information</b></h5>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Birthday:</b>
-                        </div>
-                        <p style="color:#14779C; font-weight: normal;">{{ birthdate }}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <b>Gender:</b>
-                        </div>
-                        <p style="color:#14779C; font-weight: normal;">{{ sex }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div style="text-align: center" class="card-body">
-                                <p><b>Allergies:</b></p>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <!--- Patient's allergies, 'warning' for yellow color -->
-                                        <h5><span class="badge badge-warning">ALERGIA A MEDICINA</span></h5>
+                            <div class="card">
+                                <div style="text-align: center" class="card-body">
+                                    <p><b>Allergies:</b></p>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <!--- Patient's allergies, 'warning' for yellow color -->
+                                            <h5><span class="badge badge-warning">ALERGIA A MEDICINA</span></h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <br>
+                    <br>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div style="text-align: center" class="card-body">
-                                <p><b>Chronical Diseases:</b></p>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <!--- Patient's chronical diseases, 'danger' for red color -->
-                                        <h5><span class="badge badge-danger">ENFERMEDADES CRONICAS</span></h5>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div style="text-align: center" class="card-body">
+                                    <p><b>Chronical Diseases:</b></p>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <!--- Patient's chronical diseases, 'danger' for red color -->
+                                            <h5><span class="badge badge-danger">ENFERMEDADES CRONICAS</span></h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-        </div>
 
-        <br>
+            <br>
 
-        <div class="row">
-            <img style="float: left; margin-right: 1%" src="{{ url_for('static', filename='images/icons/medical_information.png') }}" width="25" height="25">
-            <h4>Medical Information</h4>
-        </div>
+            <div class="row">
+                <img style="float: left; margin-right: 1%" src="{{ url_for('static', filename='images/icons/medical_information.png') }}" width="25" height="25">
+                <h4>Medical Information</h4>
+            </div>
 
-        <!-- Medical information about the patient -->
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    <h5 class="card-header">View Medical History</h5>
-                    <div style="text-align: center" class="card-body">
-                        <p style="text-align: left" class="card-text">See the last treatments, diagnosis and medical studies.</p>
-                        <!-- Specifies the link's destination -->
-                        <a href=" {{ url_for('medical_history') }}" class="btn btn-secondary">View Medical History</a>
+            <!-- Medical information about the patient -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <h5 class="card-header">View Medical History</h5>
+                        <div style="text-align: center" class="card-body">
+                            <p style="text-align: left" class="card-text">See the last treatments, diagnosis and medical studies.</p>
+                            <!-- Specifies the link's destination -->
+                            <a href=" {{ url_for('medical_history') }}" class="btn btn-secondary">View Medical History</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <h5 class="card-header">Upload Medical Studies</h5>
+                        <div style="text-align: center" class="card-body">
+                            <p style="text-align: left" class="card-text">Upload and add details to new medical studies.</p>
+                            <!-- Specifies the link's destination -->
+                            <a href=" {{ url_for('upload_study') }}" class="btn btn-secondary">Upload Medical Studies</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
-                    <h5 class="card-header">Upload Medical Studies</h5>
-                    <div style="text-align: center" class="card-body">
-                        <p style="text-align: left" class="card-text">Upload and add details to new medical studies.</p>
-                        <!-- Specifies the link's destination -->
-                        <a href=" {{ url_for('upload_study') }}" class="btn btn-secondary">Upload Medical Studies</a>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
 
-    {% endif %}
+        {% endif %}
 
-</body>
+    </body>
 
 </html>
