@@ -1,5 +1,4 @@
 #Creates the code of the patient
-#Before patient_controller
 class CodeController:
     _id = 0
 

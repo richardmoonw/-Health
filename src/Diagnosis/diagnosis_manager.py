@@ -1,4 +1,4 @@
-#Before diagnosiscontroller
+#Class in charge of validating the diagnosis
 class DiagnosisManager:
 	def validate_diagnosis_information(diagnosis):
 		is_valid = True

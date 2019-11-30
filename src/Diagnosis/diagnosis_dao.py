@@ -1,6 +1,9 @@
 from DatabaseConnection import connection
 
+#Class in charge of uploading the diagnosis info to the database
 class DiagnosisDAO:
+
+    #Creates a new diagnosis in the database
     def create_diagnosis(diagnosis):
         conn = connection.Connection.make_connection()
 
@@ -26,14 +29,3 @@ class DiagnosisDAO:
         conn.commit()
 
         conn.close()
-
-    # def get_file_id(id):
-	# 	conn = connection.Connection.make_connection()
-
-	# 	cur = conn.cursor()
-
-	# 	cur.execute("SELECT file_id FROM Diagnosis WHERE file_id ='" + file_id + "'")
-
-	# 	file_id = cur.fetchone()
-
-	# 	return file_id """
