@@ -1,3 +1,4 @@
+#Class prescription object
 class PrescriptionController:
 	description = ""
 	patient_id = 0
@@ -9,6 +10,7 @@ class PrescriptionController:
 	frequency_value = ""
 	frequency = ""
 
+	#Instantiation
 	def create_new_prescription(self):
 		self.description = "description"
 		self.patient_id = 0
@@ -20,6 +22,7 @@ class PrescriptionController:
 		self.frequency_value = "frequency_value"
 		self.frequency = "frequency"
 
+	#Assign the info that the doctor provides
 	def add_prescription(self, description, doctor_id, date_created, dose, \
 				administration, frequency_value, frequency):
 		self.description = description

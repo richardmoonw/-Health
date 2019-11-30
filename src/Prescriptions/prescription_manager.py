@@ -1,3 +1,5 @@
+#Class in charge of validating the prescription information
+#that the doctor provided
 class PrescriptionManager:
 	def validate_prescription_information(treatment):
 		is_valid = True

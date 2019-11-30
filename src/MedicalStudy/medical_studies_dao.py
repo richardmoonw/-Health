@@ -1,5 +1,6 @@
 from DatabaseConnection import connection
 
+#Class in charge of updating the medical study to the database
 class MedicalStudiesDAO:
 	def create_medical_study(study):
 		conn = connection.Connection.make_connection()

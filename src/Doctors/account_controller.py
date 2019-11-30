@@ -1,3 +1,4 @@
+#Class in charge of creating the doctor object
 class AccountController:
 	_id = 0
 	first_name = ""
@@ -29,10 +30,3 @@ class AccountController:
 		self.speciality = speciality
 		self.hospital = hospital
 		self.rating = 10
-
-	
-	# def create_degree(self, _id, filename):
-	# 	self._id = _id
-	# 	self.filename = filename
-
-

@@ -1,3 +1,4 @@
+#Class in charge of validating the study the doctor uploads
 class UploadStudiesManager:
 	def validate_medical_study(patient):
 

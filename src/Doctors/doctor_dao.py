@@ -31,6 +31,7 @@ class DoctorDAO:
 
 		return doctor
 
+	#get the password of a specified doctor
 	def validate_login(email):
 		conn = connection.Connection.make_connection()
 
@@ -41,6 +42,7 @@ class DoctorDAO:
 
 		return user
 
+	#Get all the atributes of the doctor
 	def get_doctor(id):
 		conn = connection.Connection.make_connection()
 
@@ -54,7 +56,6 @@ class DoctorDAO:
 		return doctor
 
 	#Adds degree to the database
-	#Before new_degree
 	def create_degree(doctor):
 		conn = connection.Connection.make_connection()
 
@@ -65,5 +66,3 @@ class DoctorDAO:
 		conn.commit()
 
 		conn.close()
-
-
