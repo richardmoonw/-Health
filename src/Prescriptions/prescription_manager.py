@@ -1,5 +1,5 @@
 class PrescriptionManager:
-	def validate_data(treatment):
+	def validate_prescription_information(treatment):
 		is_valid = True
 
 		if treatment.description is None:
@@ -11,7 +11,7 @@ class PrescriptionManager:
 		elif treatment.doctor_id is None:
 			is_valid = False
 
-		elif treatment.type is None:
+		elif treatment._type is None:
 			is_valid = False
 
 		elif treatment.date_created is None:

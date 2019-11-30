@@ -1,0 +1,74 @@
+thread 5 is starting
+thread 0 is starting
+thread 7 is starting
+thread 2 is starting
+thread 8 is starting
+thread 6 is starting
+thread 9 is starting
+thread 4 is starting
+thread 1 is starting
+thread 3 is starting
+Thread 5 is at 5
+Thread 0 is at 5
+Thread 7 is at 5
+Thread 2 is at 5
+Thread 8 is at 5
+Thread 6 is at 5
+Thread 9 is at 5
+Thread 4 is at 5
+Thread 1 is at 5
+Thread 3 is at 5
+Thread 5 is at 4
+Thread 0 is at 4
+Thread 7 is at 4
+Thread 2 is at 4
+Thread 8 is at 4
+Thread 6 is at 4
+Thread 9 is at 4
+Thread 4 is at 4
+Thread 1 is at 4
+Thread 3 is at 4
+Thread 5 is at 3
+Thread 0 is at 3
+Thread 7 is at 3
+Thread 2 is at 3
+Thread 8 is at 3
+Thread 6 is at 3
+Thread 9 is at 3
+Thread 4 is at 3
+Thread 1 is at 3
+Thread 3 is at 3
+Thread 5 is at 2
+Thread 0 is at 2
+Thread 7 is at 2
+Thread 2 is at 2
+Thread 8 is at 2
+Thread 6 is at 2
+Thread 9 is at 2
+Thread 4 is at 2
+Thread 1 is at 2
+Thread 3 is at 2
+Thread 5 is at 1
+Exiting 5
+Thread 0 is at 1
+Exiting 0
+Thread 7 is at 1
+Exiting 7
+Thread 2 is at 1
+Exiting 2
+Thread 8 is at 1
+Exiting 8
+Thread 6 is at 1
+Exiting 6
+Thread 9 is at 1
+Exiting 9
+Thread 4 is at 1
+Exiting 4
+Thread 1 is at 1
+Exiting 1
+Thread 3 is at 1
+Exiting 3
+
+real    0m55.323s
+user    0m2.021s
+sys     0m0.242s

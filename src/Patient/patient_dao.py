@@ -8,7 +8,7 @@ class PatientDAO:
 
 		cur = conn.cursor()
 
-		cur.execute("SELECT id FROM MedicalHistory WHERE patient_id=" + str(patient.patient_id))
+		cur.execute("SELECT id FROM MedicalHistory WHERE patient_id=" + str(patient._id))
 		history_id = cur.fetchone()
 
 		cur.execute("SELECT * FROM MedicalFile WHERE history_id=" + str(history_id[0]) + " ORDER BY date DESC")
@@ -109,22 +109,20 @@ class PatientDAO:
 		conn = connection.Connection.make_connection()
 
 		cur = conn.cursor()
-		cur.execute("UPDATE Patient SET access_flag=true, doctor_access = " +str(doctor_id) + " WHERE id = " + patient_id)
+		cur.execute("UPDATE Patient SET access_flag=1, doctor_access = " +str(doctor_id) + " WHERE id = " + str(patient_id))
 		conn.commit()
 
 		conn.close()
 
-	def allow_access(patient_id):
+	#Before allow_access
+	def retrieve_general_information(patient_id):
 		conn = connection.Connection.make_connection()
 
 		cur = conn.cursor()
-		cur.execute("UPDATE Patient SET access_flag=false WHERE id = " + str(patient_id))
+		cur.execute("UPDATE Patient SET access_flag=0 WHERE id = " + str(patient_id))
 		conn.commit()
 
 		conn.close()
-
-
-
 
 
 

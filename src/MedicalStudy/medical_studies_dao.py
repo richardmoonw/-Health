@@ -1,7 +1,7 @@
 from DatabaseConnection import connection
 
-class StudyDAO:
-	def add_study(study):
+class MedicalStudiesDAO:
+	def create_medical_study(study):
 		conn = connection.Connection.make_connection()
 
 		cur = conn.cursor()
@@ -9,7 +9,7 @@ class StudyDAO:
 		cur.execute("SELECT id FROM MedicalHistory WHERE patient_id=" + str(study.patient_id))
 		history_id = cur.fetchone()
 
-		cur.execute("INSERT INTO MedicalFile (date, type, history_id) VALUES (?, ?, ?)", (study.date, study.type, \
+		cur.execute("INSERT INTO MedicalFile (date, type, history_id) VALUES (?, ?, ?)", (study.date, study._type, \
 					history_id[0]))
 		conn.commit()
 

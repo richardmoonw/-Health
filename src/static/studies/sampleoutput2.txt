@@ -1,0 +1,83 @@
+Starting Thread 5
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 10
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 1
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 1
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 8
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 7
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 9
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 6
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 6 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 6 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 3
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Thread 3 is sleeping 1 seconds while waiting for my turn to finish
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 6 is sleeping 1 seconds while waiting for my turn to finish
+Thread 3 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 4
+Thread 4 is sleeping 1 seconds while waiting for my turn to finish
+Thread 6 is sleeping 1 seconds while waiting for my turn to finish
+Thread 4 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 3 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Exit main thread
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Starting Thread 2
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 2
+Thread 6 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Thread 4 is sleeping 1 seconds while waiting for my turn to finish
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 3
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Thread 5 is sleeping 1 seconds while waiting for my turn to finish
+Thread 6 is sleeping 1 seconds while waiting for my turn to finish
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 4
+Thread 7 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 5
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 6
+Thread 8 is sleeping 1 seconds while waiting for my turn to finish
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 7
+Thread 9 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 8
+Thread 10 is sleeping 1 seconds while waiting for my turn to finish
+Exiting Thread 9
+Exiting Thread 10

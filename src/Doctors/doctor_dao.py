@@ -2,7 +2,9 @@ from DatabaseConnection import connection
 import hashlib
 
 class DoctorDAO:
-	def add_doctor(doctor):
+	#Creates the doctor in the database when you first sign up
+	#Before add_doctor
+	def create_new_doctor(doctor):
 		conn = connection.Connection.make_connection()
 
 		cur = conn.cursor()
@@ -51,7 +53,9 @@ class DoctorDAO:
 
 		return doctor
 
-	def new_degree(doctor):
+	#Adds degree to the database
+	#Before new_degree
+	def create_degree(doctor):
 		conn = connection.Connection.make_connection()
 
 		cur = conn.cursor()
