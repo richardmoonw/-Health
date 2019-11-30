@@ -1,8 +1,5 @@
-#Before DoctorController
+#Class in charge of validating the doctor object
 class AccountManager:
-
-	#Validate the doctor when trying to sign up
-	#Before = validate_data
 	def validate_information(doctor):
 
 		is_valid = True
@@ -31,16 +28,3 @@ class AccountManager:
 			is_valid = False
 
 		return is_valid
-
-	#Validate certificate
-	# def validate_doctor(doctor):
-
-	# 	is_valid = True
-
-	# 	if doctor._id is None:
-	# 		is_valid = False
-
-	# 	elif doctor.filename is None:
-	# 		is_valid = False
-
-	# 	return is_valid

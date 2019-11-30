@@ -1,6 +1,10 @@
 from DatabaseConnection import connection 
 
+#Class in charge of accessing the database and updating the information
+#related to the patient
 class PatientDAO:
+
+	#Select a patient and returns
 	def get_medical_history(patient):
 		files = []
 
@@ -50,6 +54,7 @@ class PatientDAO:
 
 		return files
 
+	#Get the prescription items and returns them
 	def get_list(treatment_id):
 		treatments = []
 
@@ -68,6 +73,7 @@ class PatientDAO:
 
 		return treatments
 
+	#Select the drugs that are in the database
 	def get_drugs():
 		conn = connection.Connection.make_connection()
 
@@ -80,7 +86,7 @@ class PatientDAO:
 
 		return drugs
 
-
+	#Selects the encrypted password and return it
 	def validate_login(email):
 		conn = connection.Connection.make_connection()
 
@@ -93,6 +99,7 @@ class PatientDAO:
 
 		return user
 
+	#Get all the atributes of a specific patient
 	def get_patient(id):
 		conn = connection.Connection.make_connection()
 
@@ -105,6 +112,7 @@ class PatientDAO:
 
 		return patient
 
+	#Updating the flags needed to give access
 	def request_access(doctor_id, patient_id):
 		conn = connection.Connection.make_connection()
 
@@ -114,7 +122,7 @@ class PatientDAO:
 
 		conn.close()
 
-	#Before allow_access
+	#Updating the flags after being given access by the patient
 	def retrieve_general_information(patient_id):
 		conn = connection.Connection.make_connection()
 

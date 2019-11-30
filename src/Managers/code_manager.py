@@ -1,3 +1,4 @@
+#Validate the patient object
 class CodeManager:
 	def validate_code(patient):
 

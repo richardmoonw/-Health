@@ -1,6 +1,6 @@
 from Patient import patient_manager
 
-#Now CodeController
+#Class in charge of creating the patient object
 class PatientController:
 	patient_code = 0
 	def request_medical_history(self, patient_code):

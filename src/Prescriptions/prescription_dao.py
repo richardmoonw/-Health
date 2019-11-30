@@ -1,5 +1,6 @@
 from DatabaseConnection import connection
 
+#Class in charge of accessing the database with the information related to the prescriptions
 class PrescriptionDAO:
     def create_prescription(treatment):
         conn = connection.Connection.make_connection()

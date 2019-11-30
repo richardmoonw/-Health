@@ -1,5 +1,5 @@
+#Class in charge of validating the degree of the doctor
 class DocumentManager:
-    #Before validate_doctor
     def validate_degree(doctor):
 
             is_valid = True
