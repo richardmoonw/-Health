@@ -1,7 +1,7 @@
 from DatabaseConnection import connection
 
 class DiagnosisDAO:
-    def add_diagnosis(diagnosis):
+    def create_diagnosis(diagnosis):
         conn = connection.Connection.make_connection()
 
         cur = conn.cursor()
@@ -14,7 +14,7 @@ class DiagnosisDAO:
 
         # Hacer el medical file
         cur.execute("INSERT INTO MedicalFile (date, type, history_id) VALUES (?, ?, ?)", (diagnosis.date_created, \
-                    diagnosis.type, history_id[0]))
+                    diagnosis._type, history_id[0]))
         conn.commit()
 
         cur.execute("SELECT MAX(id) FROM MedicalFile")

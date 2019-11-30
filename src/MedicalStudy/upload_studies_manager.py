@@ -1,5 +1,5 @@
-class StudyManager:
-	def validate_information(patient):
+class UploadStudiesManager:
+	def validate_medical_study(patient):
 
 		is_valid = True
 
@@ -9,7 +9,7 @@ class StudyManager:
 		elif patient.date is None:
 			is_valid = False
 
-		if patient.type is None:
+		if patient._type is None:
 			is_valid = False
 
 		if patient.description is None:

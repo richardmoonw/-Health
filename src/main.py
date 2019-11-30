@@ -5,11 +5,13 @@ from werkzeug import secure_filename
 
 import hashlib
 
-from Doctors import doctor, doctor_controller, doctor_dao
-from Diagnosis import diagnosis, diagnosis_controller, diagnosis_dao
-from Prescriptions import prescription, prescription_manager, prescription_dao
-from Patient import patient_controller, patient_manager, patient_dao
-from MedicalStudy import study_controller, study_manager, study_dao
+from Doctors import account_controller, account_manager, doctor_dao
+from Diagnosis import diagnosis_controller, diagnosis_manager, diagnosis_dao
+from Prescriptions import prescription_controller, prescription_manager, prescription_dao
+from Patient import patient_dao, patient_manager, patient_controller
+from MedicalStudy import upload_studies_controller, upload_studies_manager, medical_studies_dao
+from Controllers import document_controller, code_controller
+from Managers import document_manager, code_manager
 
 app = Flask(__name__)
 app.secret_key = "O@''bw9QWHjx9|]"
@@ -42,14 +44,14 @@ def sign_up():
 		speciality = request.form.get("speciality")
 		hospital = request.form.get("hospital")
 
-		medic = doctor.Doctor()
-		medic.create_doctor(first_name, last_name, email, password, birthdate, phone, sex,\
+		medic = account_controller.AccountController()
+		medic.enter_new_account_information(first_name, last_name, email, password, birthdate, phone, sex,\
 							school, graduation_date, speciality, hospital)
 
-		is_valid = doctor_controller.DoctorController.validate_data(medic)
+		is_valid = account_manager.AccountManager.validate_information(medic)
 
 		if is_valid == True:
-			doc = doctor_dao.DoctorDAO.add_doctor(medic)
+			doc = doctor_dao.DoctorDAO.create_new_doctor(medic)
 			doctor_id = doc[0]
 			return redirect('/upload_degree')
 
@@ -66,13 +68,18 @@ def upload_degree():
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-		medic = doctor.Doctor()
-		medic.create_degree(doctor_id, filename)
+		#Before
+		# medic = account_controller.AccountController()
+		# medic.create_degree(doctor_id, filename)
+		document_con = document_controller.DocumentController()
+		document_con.upload_medical_degree(doctor_id, filename)
 
-		is_valid = doctor_controller.DoctorController.validate_doctor(medic)
+		##validates doctor's degree
+		is_valid = document_manager.DocumentManager.validate_degree(document_con)
 
 		if is_valid == True:
-			doc = doctor_dao.DoctorDAO.new_degree(medic)
+			#Updates to database
+			doctor_dao.DoctorDAO.create_degree(document_con)
 			doctor_id = 0
 			return redirect('/')
 
@@ -172,9 +179,10 @@ def search_patient():
 	if request.method == "POST":
 		patient_id2 = request.form.get("patient_id")
 
-		pat = patient_controller.PatientController(patient_id2)
+		pat_code = code_controller.CodeController()
+		pat_code.enter_patients_code(patient_id2)
 
-		is_valid = patient_manager.PatientManager.validate_information(pat)
+		is_valid = code_manager.CodeManager.validate_code(pat_code)
 
 		if is_valid == True:
 			patient = patient_dao.PatientDAO.get_patient(patient_id2)	
@@ -200,12 +208,13 @@ def view_patient():
 	patient = patient_dao.PatientDAO.get_patient(patient_id)
 	if request.method == "POST":
 		treatments = []
-		pat = patient_controller.PatientController(patient_id)
+		pat_code = code_controller.CodeController()
+		pat_code.enter_patients_code(patient_id)
 
-		is_valid = patient_manager.PatientManager.validate_information(pat)
+		is_valid = code_manager.CodeManager.validate_code(pat_code)
 
 		if is_valid == True:
-			files = patient_dao.PatientDAO.get_medical_history(pat)
+			files = patient_dao.PatientDAO.get_medical_history(pat_code)
 			for file in files:
 				if file[0] == "treatment":
 					treatments.append(patient_dao.PatientDAO.get_list(file[4]))
@@ -227,7 +236,9 @@ def patient_profile():
 	doc = doctor_dao.DoctorDAO.get_doctor(patient[9])
 
 	if request.method == "POST":
-		patient_dao.PatientDAO.allow_access(patient_id) 
+		#Request general info fa
+		patient_manager.PatientManager.request_general_information(patient_id)
+		#patient_dao.PatientDAO.retrieve_general_information(patient_id)
 		return redirect('/patient_profile')
 
 	if 'name' in session:
@@ -250,12 +261,15 @@ def upload_study():
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		
-		study = study_controller.StudyController(patient_id, filename, date, description);
+		#study = study_controller.StudyController(patient_id, filename, date, description)
+		study = upload_studies_controller.UploadStudiesController()
+		study.upload_new_medical_study()
+		study.add_medical_study(patient_id, filename, date, description)
 
-		is_valid = study_manager.StudyManager.validate_information(study)
+		is_valid = upload_studies_manager.UploadStudiesManager.validate_medical_study(study)
 
 		if is_valid == True:
-			study_dao.StudyDAO.add_study(study)
+			medical_studies_dao.MedicalStudiesDAO.create_medical_study(study)
 
 			patient = patient_dao.PatientDAO.get_patient(patient_id)
 
@@ -287,13 +301,18 @@ def new_treatment():
 			frequency_value.append(request.form.get("frequency_value" + str(x)))
 			frequency.append(request.form.get("frequency" + str(x)))
 
-		pres = prescription.PrescriptionController(description, 1, treatment_date, dose, \
-													administration, frequency_value, frequency)
+		# pres = prescription.PrescriptionController(description, 1, treatment_date, dose, \
+		# 											administration, frequency_value, frequency)
 
-		is_valid = prescription_manager.PrescriptionManager.validate_data(pres)
+		pres = prescription_controller.PrescriptionController()
+		pres.create_new_prescription()
+		pres.add_prescription(description, doctor_id, treatment_date, dose, \
+								administration, frequency_value, frequency)
+
+		is_valid = prescription_manager.PrescriptionManager.validate_prescription_information(pres)
 
 		if is_valid == True:
-			prescription_dao.PrescriptionDAO.add_treatment(pres)
+			prescription_dao.PrescriptionDAO.create_prescription(pres)
 
 	if 'name' in session:
 		return render_template('new_treatment.html')
@@ -307,12 +326,17 @@ def new_diagnosis():
 		date_created = request.form.get("date_created")
 		description = request.form.get("description")
 
-		diag = diagnosis.Diagnosis(date_created, description, 1)
+		#Create a diagnosis
+		diag = diagnosis_controller.DiagnosisController()
+		diag.create_new_diagnosis()
+		diag.add_diagnosis(date_created, description, doctor_id)
 
-		is_valid = diagnosis_controller.DiagnosisController.validate_data(diag)
+		#Validate diagnosis
+		is_valid = diagnosis_manager.DiagnosisManager.validate_diagnosis_information(diag)
 
 		if is_valid == True:
-			diagnosis_dao.DiagnosisDAO.add_diagnosis(diag)
+			#access the database
+			diagnosis_dao.DiagnosisDAO.create_diagnosis(diag)
 
 
 	if 'name' in session:
@@ -323,7 +347,10 @@ def new_diagnosis():
 
 @app.route('/medical_history')
 def medical_history():
-	patient = patient_dao.PatientDAO.get_patient(patient_id)
+	# before patient = patient_dao.PatientDAO.get_patient(patient_id)
+	patient_con = patient_controller.PatientController()
+	patient = patient_con.request_medical_history(patient_id)
+
 	if 'name' in session:
 		return render_template('medical_history.html', patient = patient)
 	else:

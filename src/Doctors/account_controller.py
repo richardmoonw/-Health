@@ -1,4 +1,4 @@
-class Doctor:
+class AccountController:
 	_id = 0
 	first_name = ""
 	last_name = ""
@@ -14,7 +14,7 @@ class Doctor:
 	rating = 10
 	filename = ""
 
-	def create_doctor(self, first_name, last_name, email, password, birthdate, phone, sex,\
+	def enter_new_account_information(self, first_name, last_name, email, password, birthdate, phone, sex,\
 				school, graduation_date, speciality, hospital):
 	
 		self.first_name = first_name
@@ -30,8 +30,9 @@ class Doctor:
 		self.hospital = hospital
 		self.rating = 10
 
-	def create_degree(self, _id, filename):
-		self._id = _id
-		self.filename = filename
+	
+	# def create_degree(self, _id, filename):
+	# 	self._id = _id
+	# 	self.filename = filename
 
 
