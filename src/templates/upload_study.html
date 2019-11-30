@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-</head>
+    <head>
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    </head>
 
-<!-- Background color, doesn't include form -->
+    <!-- Background color, doesn't include form -->
 
-<body style="background-color: rgba(22,22,22,0.3)">
-    <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
-        <div class="col-lg-3"></div>
-        <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-6">
-            <!-- Logo, atributes -->
-            <div style="margin: 1%;" class="row">
-                <div class="col-lg-5"></div>
-                <div class="col-lg-2 text-center">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+    <body style="background-color: rgba(22,22,22,0.3)">
+        <div style="margin-top: 2%; margin-left: 2%; margin-right:2%;" class="row">
+            <div class="col-lg-3"></div>
+            <div style="background-color: #ffffff; border-radius: 10px" class="col-lg-6">
+                <!-- Logo, atributes -->
+                <div style="margin: 1%;" class="row">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-2 text-center">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" width="40" height="40">
+                    </div>
                 </div>
+
+                <hr>
+                <h4><b>Upload Medical Study</b></h4>
+
+                <form action="/upload_study" method="POST" enctype = "multipart/form-data">
+
+                    <div style="margin-top: 5%" class="form-group; col-lg-6">
+                        <label for="date_created">Date the study was made</label>
+                        <input type="date" class="form-control" name="date_created">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description"><b>Study Description:</b></label>
+                        <!--- Area for the patient to fill with the study's description-->
+                        <textarea class="form-control" name="description" rows="3"></textarea>
+                    </div>
+
+                    <div style="margin-top: 5%" class="form-group">
+                        <input type="file" class="form-control-file" name="medical_study">
+                    </div>
+
+                    <div style="margin-bottom: 2%" class="row">
+                        <!-- Submit & cancel buttons -->
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-2">
+                            <a href="{{ url_for('patient_profile') }}">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </a>
+                        </div>
+                        <div class="col-lg-2">
+                            <!-- 'danger' for the red color -->
+                            <button type="submit" onclick="confirmation()" class="btn btn-danger">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-
-            <hr>
-            <h4><b>Upload Medical Study</b></h4>
-
-            <form action="/upload_study" method="POST" enctype = "multipart/form-data">
-
-                <div style="margin-top: 5%" class="form-group; col-lg-6">
-                    <label for="date_created">Date the study was made</label>
-                    <input type="date" class="form-control" name="date_created">
-                </div>
-
-                <div class="form-group">
-                    <label for="description"><b>Study Description:</b></label>
-                    <!--- Area for the patient to fill with the study's description-->
-                    <textarea class="form-control" name="description" rows="3"></textarea>
-                </div>
-
-                <div style="margin-top: 5%" class="form-group">
-                    <input type="file" class="form-control-file" name="medical_study">
-                </div>
-
-                <div style="margin-bottom: 2%" class="row">
-                    <!-- Submit & cancel buttons -->
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-2">
-                        <a href="{{ url_for('patient_profile') }}">
-                            <button type="button" class="btn btn-secondary">Cancel</button>
-                        </a>
-                    </div>
-                    <div class="col-lg-2">
-                        <!-- 'danger' for the red color -->
-                        <button type="submit" onclick="confirmation()" class="btn btn-danger">Submit</button>
-                    </div>
-                </div>
-            </form>
-
         </div>
-    </div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-</body>
+    </body>
 
 <script>
     function confirmation(){
